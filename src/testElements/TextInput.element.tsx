@@ -1,4 +1,4 @@
-import { fireEvent, getByLabelText } from "@testing-library/react";
+import { getByLabelText } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 export class TextInputElement {
