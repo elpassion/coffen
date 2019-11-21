@@ -1,21 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-// import { RootState } from "stores/rootReducer";
-import { authSlice } from "stores/auth";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-export function App() {
-  // const authState = useSelector((state: RootState) => state.auth);
-  const dispatch = useDispatch();
+import { routing } from "utils/routing";
+
+import { Feed } from "containers/Feed";
+
+export const App = () => {
   return (
-    <div>
-      <header>
-        <p onClick={() => dispatch(authSlice.actions.authenticate())}>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route path={routing.FEED} exact component={Feed} />
+    </Router>
   );
-}
+};
