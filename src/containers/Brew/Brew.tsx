@@ -2,6 +2,7 @@ import { TextField } from "components/Form/TextField";
 import { SelectField, SelectFieldOption } from "components/Form/SelectField";
 import React, { useState } from "react";
 import { Form } from "react-final-form";
+import { SubmitButton } from "components/Form/SubmitButton";
 
 export enum BrewingTechnique {
   Drip = "Drip"
@@ -39,9 +40,7 @@ export const Brew = () => {
                 {BrewingTechnique.Drip}
               </SelectFieldOption>
             </SelectField>
-            <button type="submit" title="Rate" disabled={submitting || !valid}>
-              💯
-            </button>
+            <SubmitButton title="Rate">Rate</SubmitButton>
           </>
         )}
       />
