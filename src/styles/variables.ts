@@ -33,9 +33,14 @@ export const font = {
   }
 };
 
+export const size = {
+  defaultPadding: 16
+};
+
 export default {
   transitions,
   colorName,
   colors,
-  font
+  font,
+  size
 };
