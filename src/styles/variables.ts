@@ -1,21 +1,19 @@
 export const colors = {
-  white: "#ffffff",
-  black: "#000000",
   creamCan: "#f4c553",
   christine: "#e3690e",
   shiraz: "#ba0b1b",
   abbey: "#454648",
-  ivory: "#fffff4"
+  ivory: "#fffff4",
+  khaki: "#bfb088"
 };
 
 export const colorName = {
-  white: colors.white,
-  black: colors.black,
   yellow: colors.creamCan,
   orange: colors.christine,
   red: colors.shiraz,
   gray: colors.abbey,
-  beige: colors.ivory
+  beige: colors.ivory,
+  shadows: colors.khaki
 };
 
 export const transitions = {
