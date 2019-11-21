@@ -9,7 +9,7 @@ import * as serviceWorker from "./serviceWorker";
 
 WebFont.load({
   google: {
-    families: ["Oswald:600", "Lato:400,700"]
+    families: ["Oswald:400,600", "Lato:400,700"]
   }
 });
 
