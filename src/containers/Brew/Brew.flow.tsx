@@ -13,19 +13,19 @@ export class BrewFlow {
 
   private constructor(private readonly container: HTMLElement) {}
 
-  public addNewBrew() {
+  public async addNewBrew() {
     this.addNewBrewButton.click();
   }
 
-  public rateBrew() {
+  public async rateBrew() {
     this.rateBrewButton.click();
   }
 
-  public setCoffee(coffeeName: string) {
+  public async setCoffee(coffeeName: string) {
     return this.coffeeInput.setValue(coffeeName);
   }
 
-  public setBrewingMethod(brewingMethod: BrewingTechnique) {
+  public async setBrewingMethod(brewingMethod: BrewingTechnique) {
     this.brewingMethodInput.setValue(brewingMethod);
   }
 
