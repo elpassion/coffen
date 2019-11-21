@@ -1,7 +1,18 @@
 import React from "react";
 
-import { Wrapper } from "./style";
+import { TabBar } from "./TabBar";
 
-export const TabbedWrapper = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+import { Container } from "styles/commonStyles";
+import { Wrapper, View } from "./style";
+
+export const TabbedWrapper: React.FC = ({ children }) => {
+  return (
+    <Wrapper>
+      <View>
+        <Container>{children}</Container>
+      </View>
+
+      <TabBar />
+    </Wrapper>
+  );
 };
