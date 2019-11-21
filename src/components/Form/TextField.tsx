@@ -4,7 +4,7 @@ import { Field } from "react-final-form";
 interface TextFieldProps {
   name: string;
   label: string;
-  initialValue: string;
+  initialValue?: string;
 }
 
 export const TextField: React.FC<TextFieldProps> = ({ name, label, initialValue }) => (
