@@ -1,5 +1,5 @@
 import { BrewFlow } from "./Brew.flow";
-import { BrewingTechnique, BrewingProcess, GrindSize } from "./options";
+import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
 
 // set rating
 // add comment

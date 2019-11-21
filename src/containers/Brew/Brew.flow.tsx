@@ -1,12 +1,12 @@
-import { queryByText, render, prettyDOM, getByText } from "@testing-library/react";
+import { getByText, queryByText, render } from "@testing-library/react";
+import { App } from "containers/App";
 import React from "react";
 import { ButtonElement } from "testElements/Button.element";
-import { TextInputElement } from "testElements/TextInput.element";
 import { SelectInputElement } from "testElements/SelectInput.element";
-import { App } from "containers/App";
-import { BrewingTechnique, BrewingProcess, GrindSize } from "./options";
-import { BrewingCustomizationFormValues } from "./components/BrewCustomizationForm";
+import { TextInputElement } from "testElements/TextInput.element";
 import { BrewingBasicsFormValues } from "./components/BrewBasicsForm";
+import { BrewingCustomizationFormValues } from "./components/BrewCustomizationForm";
+import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
 
 export class BrewFlow {
   static async render() {
