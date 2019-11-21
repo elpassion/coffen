@@ -7,7 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 
 const render = () => {
   const { App } = require("containers/App");
-  console.log(App);
+
   ReactDOM.render(
     <Provider store={initStore}>
       <GlobalStyle />

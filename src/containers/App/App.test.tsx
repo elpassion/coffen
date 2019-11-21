@@ -1,9 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import "@testing-library/jest-dom/extend-expect";
+import { renderWithRedux } from "utils/testUtils";
+
 import { App } from "./";
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe("Application", () => {
+  it("Application renders without crashing", () => {
+    renderWithRedux(<App />, { initialState: { auth: false } });
+  });
 });
