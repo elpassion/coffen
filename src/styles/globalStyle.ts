@@ -7,7 +7,8 @@ import { font } from "styles";
 export const GlobalStyle = createGlobalStyle`
  ${styledNormalize}
  
- body {
+ body,
+ html {
   margin: 0;
   padding: 0;
   font-weight: ${font.weight.regular};
