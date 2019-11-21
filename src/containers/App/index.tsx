@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 // import { RootState } from "stores/rootReducer";
 import { authSlice } from "stores/auth";
 
-function App() {
+export function App() {
   // const authState = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
   return (
@@ -19,5 +19,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
