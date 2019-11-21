@@ -3,8 +3,10 @@ import React from "react";
 import { ButtonElement } from "testElements/Button.element";
 import { TextInputElement } from "testElements/TextInput.element";
 import { SelectInputElement } from "testElements/SelectInput.element";
-import { BrewingTechnique, BrewingProcess } from ".";
 import { App } from "containers/App";
+import { BrewingTechnique, BrewingProcess, GrindSize } from "./options";
+import { BrewingCustomizationFormValues } from "./components/BrewCustomizationForm";
+import { BrewingBasicsFormValues } from "./components/BrewBasicsForm";
 
 export class BrewFlow {
   static async render() {
@@ -22,8 +24,8 @@ export class BrewFlow {
     this.rateBrewButton.click();
   }
 
-  public async setCoffee(coffeeName: string) {
-    return this.coffeeInput.setValue(coffeeName);
+  public async setCoffeeName(coffeeName: string) {
+    return this.coffeeNameInput.setValue(coffeeName);
   }
 
   public async setBrewingMethod(brewingMethod: BrewingTechnique) {
@@ -34,31 +36,71 @@ export class BrewFlow {
     this.brewingProcessInput.setValue(brewingProcess);
   }
 
+  public async openBrewCustomization() {
+    this.openBrewCustomizationButton.click();
+  }
+
+  public async customizeBrew({ coffeeWeight, grindSize, waterDose }: BrewingCustomizationFormValues) {
+    this.coffeeWeightInput.setValue(coffeeWeight);
+    this.waterDoseInput.setValue(waterDose);
+    this.grindSizeInput.setValue(grindSize);
+  }
+
+  public async hasCorrectInitialValuesForProcess(brewingProcess: BrewingProcess): Promise<boolean> {
+    return (
+      this.waterDoseInput.value === "300" &&
+      this.coffeeWeightInput.value === "18" &&
+      this.grindSizeInput.value === GrindSize.MediumFine
+    );
+  }
+
+  public async isDisplayingSummaryFor(
+    brewingData: BrewingBasicsFormValues & BrewingCustomizationFormValues
+  ): Promise<boolean> {
+    return false;
+  }
+
   public get isAddingNewBrew(): boolean {
     return !!queryByText(this.container, "New brew");
   }
 
   public get isInErrorState(): boolean {
-    return this.rateBrewButton.isDisabled;
+    return this.openBrewCustomizationButton.isDisabled;
   }
 
   private get addNewBrewButton() {
     return new ButtonElement(this.container, "Add new brew");
   }
 
-  private get coffeeInput() {
+  private get coffeeNameInput() {
     return new TextInputElement(this.container, "Coffee name");
   }
 
   private get brewingMethodInput() {
-    return new SelectInputElement(this.container, "Technique");
+    return new SelectInputElement<BrewingTechnique>(this.container, "Technique");
   }
 
   private get brewingProcessInput() {
-    return new SelectInputElement(this.container, "Process");
+    return new SelectInputElement<BrewingProcess>(this.container, "Process");
+  }
+
+  private get waterDoseInput() {
+    return new TextInputElement(this.container, "Water");
+  }
+
+  private get coffeeWeightInput() {
+    return new TextInputElement(this.container, "Coffee weight");
+  }
+
+  private get grindSizeInput() {
+    return new SelectInputElement<GrindSize>(this.container, "Grind size");
   }
 
   private get rateBrewButton() {
     return new ButtonElement(this.container, "Rate");
+  }
+
+  private get openBrewCustomizationButton() {
+    return new ButtonElement(this.container, "Customize brew");
   }
 }

@@ -1,53 +1,22 @@
-import React from "react";
-import { Form } from "react-final-form";
-
+import { SelectField, SelectFieldOption } from "components/Form/SelectField";
 import { SubmitButton } from "components/Form/SubmitButton";
 import { TextField } from "components/Form/TextField";
 import { ErrorsForValues } from "components/Form/types";
-import { SelectField, SelectFieldOption } from "components/Form/SelectField";
 import { TabbedWrapper } from "components/TabbedWrapper";
-
-export enum BrewingTechnique {
-  Drip = "Drip"
-}
-
-export enum BrewingProcess {
-  HarioV60 = "Hario v60"
-}
-
-export interface BrewingFormValues {
-  coffee: string;
-  technique: BrewingTechnique;
-  process: BrewingProcess;
-}
+import React, { useState } from "react";
+import { BrewBasicsForm, BrewingBasicsFormValues } from "./components/BrewBasicsForm";
+import { BrewCustomizationForm } from "./components/BrewCustomizationForm";
 
 export const Brew = () => {
+  const [brewBasics, setBrewBasics] = useState<BrewingBasicsFormValues | undefined>(undefined);
   return (
     <TabbedWrapper>
       <h1>New brew</h1>
-      <Form<BrewingFormValues>
-        onSubmit={() => {}}
-        subscription={{}}
-        validate={values => {
-          const errors: ErrorsForValues<BrewingFormValues> = {};
-          if (!values.coffee) errors.coffee = "Required";
-          if (!values.technique) errors.technique = "Required";
-          if (!values.process) errors.process = "Required";
-          return errors;
-        }}
-        render={() => (
-          <>
-            <TextField name="coffee" label="Coffee name" />
-            <SelectField name="technique" label="Technique" initialValue={BrewingTechnique.Drip}>
-              <SelectFieldOption value={BrewingTechnique.Drip}>{BrewingTechnique.Drip}</SelectFieldOption>
-            </SelectField>
-            <SelectField name="process" label="Process" initialValue={BrewingProcess.HarioV60}>
-              <SelectFieldOption value={BrewingProcess.HarioV60}>{BrewingProcess.HarioV60}</SelectFieldOption>
-            </SelectField>
-            <SubmitButton title="Rate">Rate</SubmitButton>
-          </>
-        )}
-      />
+      {brewBasics ? (
+        <BrewCustomizationForm />
+      ) : (
+        <BrewBasicsForm onSubmit={newBrewBasics => setBrewBasics(newBrewBasics)} />
+      )}
     </TabbedWrapper>
   );
 };
