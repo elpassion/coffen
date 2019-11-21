@@ -1,7 +1,8 @@
+import { queryByText, render } from "@testing-library/react";
 import React from "react";
-import { render, queryByText } from "@testing-library/react";
-import { Brew } from "./Brew";
 import { ButtonElement } from "../../testElements/Button.element";
+import { TextInputElement } from "../../testElements/TextInput.element";
+import { Brew } from "./Brew";
 
 export class BrewFlow {
   static async render() {
@@ -15,8 +16,16 @@ export class BrewFlow {
     this.addNewBrewButton.click();
   }
 
+  public setCoffee(coffeeName: string) {
+    return this.coffeeInput.setValue(coffeeName);
+  }
+
   get addNewBrewButton() {
     return new ButtonElement(this.container, "Add new brew");
+  }
+
+  get coffeeInput() {
+    return new TextInputElement(this.container, "Coffee name");
   }
 
   get isAddingNewBrew(): boolean {
