@@ -1,7 +1,8 @@
 import { queryByText, render } from "@testing-library/react";
 import React from "react";
-import { ButtonElement } from "../../testElements/Button.element";
-import { TextInputElement } from "../../testElements/TextInput.element";
+
+import { ButtonElement } from "testElements/Button.element";
+import { TextInputElement } from "testElements/TextInput.element";
 import { Brew } from "./Brew";
 
 export class BrewFlow {
