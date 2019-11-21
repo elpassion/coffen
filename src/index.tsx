@@ -1,20 +1,18 @@
 import React from "react";
-import App from "./App";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import configureStore from "store";
-import { GlobalStyle } from "styles";
-import * as serviceWorker from "./serviceWorker";
 
-const { store, persistor } = configureStore();
+import App from "./App";
+
+import { GlobalStyle } from "styles";
+
+import { store } from "store";
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <GlobalStyle />
-      <App />
-    </PersistGate>
+    <GlobalStyle />
+    <App />
   </Provider>,
   document.getElementById("root")
 );
