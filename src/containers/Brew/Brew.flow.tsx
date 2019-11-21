@@ -3,7 +3,7 @@ import React from "react";
 import { ButtonElement } from "testElements/Button.element";
 import { TextInputElement } from "testElements/TextInput.element";
 import { SelectInputElement } from "testElements/SelectInput.element";
-import { BrewingTechnique } from ".";
+import { BrewingTechnique, BrewingProcess } from ".";
 import { App } from "containers/App";
 
 export class BrewFlow {
@@ -30,6 +30,10 @@ export class BrewFlow {
     this.brewingMethodInput.setValue(brewingMethod);
   }
 
+  public async setBrewingProcess(brewingProcess: BrewingProcess) {
+    this.brewingProcessInput.setValue(brewingProcess);
+  }
+
   public get isAddingNewBrew(): boolean {
     return !!queryByText(this.container, "New brew");
   }
@@ -48,6 +52,10 @@ export class BrewFlow {
 
   private get brewingMethodInput() {
     return new SelectInputElement(this.container, "Technique");
+  }
+
+  private get brewingProcessInput() {
+    return new SelectInputElement(this.container, "Process");
   }
 
   private get rateBrewButton() {
