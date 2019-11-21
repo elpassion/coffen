@@ -1,5 +1,8 @@
 import styledNormalize from "styled-normalize";
 import { createGlobalStyle } from "styled-components";
+import { rem } from "polished";
+
+import { font } from "styles";
 
 export const GlobalStyle = createGlobalStyle`
  ${styledNormalize}
@@ -7,6 +10,9 @@ export const GlobalStyle = createGlobalStyle`
  body {
   margin: 0;
   padding: 0;
+  font-weight: ${font.weight.regular};
+  font-size: ${rem(font.size.normal)};
+  font-family: ${font.primary};
  }
  
  * {
