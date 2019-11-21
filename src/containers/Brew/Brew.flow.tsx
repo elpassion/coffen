@@ -20,15 +20,15 @@ export class BrewFlow {
     return this.coffeeInput.setValue(coffeeName);
   }
 
-  get addNewBrewButton() {
+  public get isAddingNewBrew(): boolean {
+    return !!queryByText(this.container, "New brew");
+  }
+
+  private get addNewBrewButton() {
     return new ButtonElement(this.container, "Add new brew");
   }
 
-  get coffeeInput() {
+  private get coffeeInput() {
     return new TextInputElement(this.container, "Coffee name");
-  }
-
-  get isAddingNewBrew(): boolean {
-    return !!queryByText(this.container, "New brew");
   }
 }
