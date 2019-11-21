@@ -57,5 +57,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "devDependencies": {
+    "@types/styled-components": "^4.4.0"
   }
 }
