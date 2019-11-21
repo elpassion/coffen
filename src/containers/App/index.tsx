@@ -1,10 +1,10 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./stores/rootReducer";
-import { authSlice } from "./stores/auth";
+import { useDispatch } from "react-redux";
+// import { RootState } from "stores/rootReducer";
+import { authSlice } from "stores/auth";
 
 function App() {
-  const authState = useSelector((state: RootState) => state.auth);
+  // const authState = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
   return (
     <div>
