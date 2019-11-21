@@ -5,7 +5,11 @@ export class ButtonElement {
   constructor(private readonly container: HTMLElement, title: string) {
     this.element = getByTitle(container, title) as HTMLButtonElement;
   }
-  click() {
+  public click() {
     fireEvent.click(this.element);
+  }
+
+  public get isDisabled() {
+    return !!this.element.disabled;
   }
 }

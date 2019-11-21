@@ -22,6 +22,8 @@ describe("Brew", () => {
     brewFlow.addNewBrew();
     await wait();
     expect(brewFlow.isAddingNewBrew).toBe(true);
+    expect(brewFlow.isInErrorState).toBe(true);
     await brewFlow.setCoffee("THE BARN");
+    expect(brewFlow.isInErrorState).toBe(false);
   });
 });
