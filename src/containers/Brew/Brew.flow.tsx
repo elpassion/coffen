@@ -1,9 +1,9 @@
 import { queryByText, render } from "@testing-library/react";
 import React from "react";
-
 import { ButtonElement } from "testElements/Button.element";
 import { TextInputElement } from "testElements/TextInput.element";
-import { Brew } from "./Brew";
+import { SelectInputElement } from "testElements/SelectInput.element";
+import { Brew, BrewingTechnique } from "./Brew";
 
 export class BrewFlow {
   static async render() {
@@ -25,6 +25,10 @@ export class BrewFlow {
     return this.coffeeInput.setValue(coffeeName);
   }
 
+  public setBrewingMethod(brewingMethod: BrewingTechnique) {
+    this.brewingMethodInput.setValue(brewingMethod);
+  }
+
   public get isAddingNewBrew(): boolean {
     return !!queryByText(this.container, "New brew");
   }
@@ -39,6 +43,10 @@ export class BrewFlow {
 
   private get coffeeInput() {
     return new TextInputElement(this.container, "Coffee name");
+  }
+
+  private get brewingMethodInput() {
+    return new SelectInputElement(this.container, "Technique");
   }
 
   private get rateBrewButton() {

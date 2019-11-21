@@ -1,5 +1,6 @@
 import { wait } from "@testing-library/react";
 import { BrewFlow } from "./Brew.flow";
+import { BrewingTechnique } from "./Brew";
 
 // set brewing method
 // set customisable fields
@@ -24,6 +25,7 @@ describe("Brew", () => {
     expect(brewFlow.isAddingNewBrew).toBe(true);
     expect(brewFlow.isInErrorState).toBe(true);
     await brewFlow.setCoffee("THE BARN");
+    await brewFlow.setBrewingMethod(BrewingTechnique.Drip);
     expect(brewFlow.isInErrorState).toBe(false);
   });
 });

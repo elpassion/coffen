@@ -3,16 +3,12 @@ import { Field } from "react-final-form";
 
 interface TextFieldProps {
   name: string;
+  label: string;
 }
 
-export const TextField: React.FC<TextFieldProps> = ({ name }) => (
-  <Field
-    name={name}
-    render={({ input }) => (
-      <>
-        <label htmlFor="coffeeInput">Coffee name</label>
-        <input {...input} id="coffeeInput" type="text" />
-      </>
-    )}
-  />
+export const TextField: React.FC<TextFieldProps> = ({ name, label }) => (
+  <>
+    <label htmlFor={name}>{label}</label>
+    <Field id={name} name={name} component="input" type="text" />
+  </>
 );
