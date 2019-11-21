@@ -1,5 +1,6 @@
 import { BrewingProcess, BrewingTechnique } from ".";
 import { BrewFlow } from "./Brew.flow";
+import { waitForDomChange } from "@testing-library/dom";
 
 // set customisable fields
 // - set water
@@ -26,5 +27,8 @@ describe("Brew", () => {
     await brewFlow.setBrewingMethod(BrewingTechnique.Drip);
     await brewFlow.setBrewingProcess(BrewingProcess.HarioV60);
     expect(brewFlow.isInErrorState).toBe(false);
+
+    await brewFlow.openBrewCustomization();
+    expect(brewFlow.hasCorrectInitialValuesForProcess(BrewingProcess.HarioV60)).toBe(true);
   });
 });

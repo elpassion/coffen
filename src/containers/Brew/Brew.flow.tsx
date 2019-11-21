@@ -3,7 +3,7 @@ import React from "react";
 import { ButtonElement } from "testElements/Button.element";
 import { TextInputElement } from "testElements/TextInput.element";
 import { SelectInputElement } from "testElements/SelectInput.element";
-import { BrewingTechnique, BrewingProcess } from ".";
+import { BrewingTechnique, BrewingProcess, GrindSize } from ".";
 import { App } from "containers/App";
 
 export class BrewFlow {
@@ -34,12 +34,24 @@ export class BrewFlow {
     this.brewingProcessInput.setValue(brewingProcess);
   }
 
+  public async openBrewCustomization() {
+    this.openBrewCustomizationButton.click();
+  }
+
+  public hasCorrectInitialValuesForProcess(brewingProcess: BrewingProcess) {
+    return (
+      this.waterDoseInput.value === "300" &&
+      this.coffeeWeightInput.value === "18" &&
+      this.grindSizeInput.value === GrindSize.MediumFine
+    );
+  }
+
   public get isAddingNewBrew(): boolean {
     return !!queryByText(this.container, "New brew");
   }
 
   public get isInErrorState(): boolean {
-    return this.rateBrewButton.isDisabled;
+    return this.openBrewCustomizationButton.isDisabled;
   }
 
   private get addNewBrewButton() {
@@ -51,14 +63,30 @@ export class BrewFlow {
   }
 
   private get brewingMethodInput() {
-    return new SelectInputElement(this.container, "Technique");
+    return new SelectInputElement<BrewingTechnique>(this.container, "Technique");
   }
 
   private get brewingProcessInput() {
-    return new SelectInputElement(this.container, "Process");
+    return new SelectInputElement<BrewingProcess>(this.container, "Process");
+  }
+
+  private get waterDoseInput() {
+    return new TextInputElement(this.container, "Water");
+  }
+
+  private get coffeeWeightInput() {
+    return new TextInputElement(this.container, "Coffee weight");
+  }
+
+  private get grindSizeInput() {
+    return new SelectInputElement<GrindSize>(this.container, "Grind size");
   }
 
   private get rateBrewButton() {
     return new ButtonElement(this.container, "Rate");
+  }
+
+  private get openBrewCustomizationButton() {
+    return new ButtonElement(this.container, "Customize brew");
   }
 }
