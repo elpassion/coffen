@@ -1,6 +1,5 @@
-import { wait } from "@testing-library/react";
+import { BrewingProcess, BrewingTechnique } from ".";
 import { BrewFlow } from "./Brew.flow";
-import { BrewingTechnique } from "./Brew";
 
 // set customisable fields
 // - set water
@@ -20,11 +19,12 @@ describe("Brew", () => {
   test("flow", async () => {
     expect(brewFlow.isAddingNewBrew).toBe(false);
     await brewFlow.addNewBrew();
-    await wait();
     expect(brewFlow.isAddingNewBrew).toBe(true);
+
     expect(brewFlow.isInErrorState).toBe(true);
     await brewFlow.setCoffee("THE BARN");
     await brewFlow.setBrewingMethod(BrewingTechnique.Drip);
+    await brewFlow.setBrewingProcess(BrewingProcess.HarioV60);
     expect(brewFlow.isInErrorState).toBe(false);
   });
 });
