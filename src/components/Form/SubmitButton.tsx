@@ -5,10 +5,7 @@ interface SubmitButtonProps {
   title: string;
 }
 
-export const SubmitButton: React.FC<SubmitButtonProps> = ({
-  title,
-  children
-}) => {
+export const SubmitButton: React.FC<SubmitButtonProps> = ({ title, children }) => {
   const { submitting, valid } = useFormState();
 
   return (
