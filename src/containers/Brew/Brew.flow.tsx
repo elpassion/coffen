@@ -3,11 +3,12 @@ import React from "react";
 import { ButtonElement } from "testElements/Button.element";
 import { TextInputElement } from "testElements/TextInput.element";
 import { SelectInputElement } from "testElements/SelectInput.element";
-import { Brew, BrewingTechnique } from "./Brew";
+import { BrewingTechnique } from ".";
+import { App } from "containers/App";
 
 export class BrewFlow {
   static async render() {
-    const { container } = render(<Brew />);
+    const { container } = render(<App />);
     return new BrewFlow(container);
   }
 

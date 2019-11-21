@@ -15,8 +15,7 @@ export interface BrewingFormValues {
 }
 
 export const Brew = () => {
-  const [isAddingNewBrew, setIsAddingNewBrew] = useState(false);
-  return isAddingNewBrew ? (
+  return (
     <>
       <h1>New brew</h1>
       <Form<BrewingFormValues>
@@ -39,9 +38,5 @@ export const Brew = () => {
         )}
       />
     </>
-  ) : (
-    <button title="Add new brew" onClick={() => setIsAddingNewBrew(true)}>
-      +
-    </button>
   );
 };

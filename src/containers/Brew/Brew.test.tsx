@@ -1,6 +1,6 @@
 import { wait } from "@testing-library/react";
 import { BrewFlow } from "./Brew.flow";
-import { BrewingTechnique } from "./Brew";
+import { BrewingTechnique } from ".";
 
 // set customisable fields
 // - set water
