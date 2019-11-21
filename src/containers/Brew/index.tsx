@@ -1,9 +1,11 @@
-import { SelectField, SelectFieldOption } from "components/Form/SelectField";
+import React from "react";
+import { Form } from "react-final-form";
+
 import { SubmitButton } from "components/Form/SubmitButton";
 import { TextField } from "components/Form/TextField";
 import { ErrorsForValues } from "components/Form/types";
-import React from "react";
-import { Form } from "react-final-form";
+import { SelectField, SelectFieldOption } from "components/Form/SelectField";
+import { TabbedWrapper } from "components/TabbedWrapper";
 
 export enum BrewingTechnique {
   Drip = "Drip"
@@ -21,7 +23,7 @@ export interface BrewingFormValues {
 
 export const Brew = () => {
   return (
-    <>
+    <TabbedWrapper>
       <h1>New brew</h1>
       <Form<BrewingFormValues>
         onSubmit={() => {}}
@@ -46,6 +48,6 @@ export const Brew = () => {
           </>
         )}
       />
-    </>
+    </TabbedWrapper>
   );
 };
