@@ -11,12 +11,14 @@ export interface BrewingCustomizationFormValues {
   grindSize: GrindSize;
 }
 
-interface BrewCustomizationFormProps {}
+interface BrewCustomizationFormProps {
+  onSubmit(brewingCustomizationValues: BrewingCustomizationFormValues): void;
+}
 
-export const BrewCustomizationForm: React.FC<BrewCustomizationFormProps> = () => {
+export const BrewCustomizationForm: React.FC<BrewCustomizationFormProps> = ({ onSubmit }) => {
   return (
     <Form<BrewingCustomizationFormValues>
-      onSubmit={() => {}}
+      onSubmit={onSubmit}
       subscription={{}}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>

@@ -1,4 +1,4 @@
-import { queryByText, render } from "@testing-library/react";
+import { queryByText, render, prettyDOM, getByText } from "@testing-library/react";
 import React from "react";
 import { ButtonElement } from "testElements/Button.element";
 import { TextInputElement } from "testElements/TextInput.element";
@@ -57,7 +57,13 @@ export class BrewFlow {
   public async isDisplayingSummaryFor(
     brewingData: BrewingBasicsFormValues & BrewingCustomizationFormValues
   ): Promise<boolean> {
-    return false;
+    return (
+      !!getByText(this.container, `Coffee Name: ${brewingData.coffeeName}`) &&
+      !!getByText(this.container, `Technique: ${brewingData.technique}`) &&
+      !!getByText(this.container, `Water: ${brewingData.waterDose}`) &&
+      !!getByText(this.container, `Coffee Weight: ${brewingData.coffeeWeight}`) &&
+      !!getByText(this.container, `Grind Size: ${brewingData.grindSize}`)
+    );
   }
 
   public get isAddingNewBrew(): boolean {
