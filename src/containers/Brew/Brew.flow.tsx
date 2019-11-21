@@ -3,8 +3,10 @@ import React from "react";
 import { ButtonElement } from "testElements/Button.element";
 import { TextInputElement } from "testElements/TextInput.element";
 import { SelectInputElement } from "testElements/SelectInput.element";
-import { BrewingTechnique, BrewingProcess, GrindSize } from ".";
 import { App } from "containers/App";
+import { BrewingTechnique, BrewingProcess, GrindSize } from "./options";
+import { BrewingCustomizationFormValues } from "./components/BrewCustomizationForm";
+import { BrewingBasicsFormValues } from "./components/BrewBasicsForm";
 
 export class BrewFlow {
   static async render() {
@@ -22,8 +24,8 @@ export class BrewFlow {
     this.rateBrewButton.click();
   }
 
-  public async setCoffee(coffeeName: string) {
-    return this.coffeeInput.setValue(coffeeName);
+  public async setCoffeeName(coffeeName: string) {
+    return this.coffeeNameInput.setValue(coffeeName);
   }
 
   public async setBrewingMethod(brewingMethod: BrewingTechnique) {
@@ -38,12 +40,24 @@ export class BrewFlow {
     this.openBrewCustomizationButton.click();
   }
 
-  public hasCorrectInitialValuesForProcess(brewingProcess: BrewingProcess) {
+  public async customizeBrew({ coffeeWeight, grindSize, waterDose }: BrewingCustomizationFormValues) {
+    this.coffeeWeightInput.setValue(coffeeWeight);
+    this.waterDoseInput.setValue(waterDose);
+    this.grindSizeInput.setValue(grindSize);
+  }
+
+  public async hasCorrectInitialValuesForProcess(brewingProcess: BrewingProcess): Promise<boolean> {
     return (
       this.waterDoseInput.value === "300" &&
       this.coffeeWeightInput.value === "18" &&
       this.grindSizeInput.value === GrindSize.MediumFine
     );
+  }
+
+  public async isDisplayingSummaryFor(
+    brewingData: BrewingBasicsFormValues & BrewingCustomizationFormValues
+  ): Promise<boolean> {
+    return false;
   }
 
   public get isAddingNewBrew(): boolean {
@@ -58,7 +72,7 @@ export class BrewFlow {
     return new ButtonElement(this.container, "Add new brew");
   }
 
-  private get coffeeInput() {
+  private get coffeeNameInput() {
     return new TextInputElement(this.container, "Coffee name");
   }
 
