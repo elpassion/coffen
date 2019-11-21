@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - v10.13.0
+env:
+  - SKIP_PREFLIGHT_CHECK=true
+cache:
+  yarn: true
+before_script:
+  - yarn
+  - yarn build
