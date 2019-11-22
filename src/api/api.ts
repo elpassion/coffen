@@ -38,7 +38,7 @@ export class Api implements IApi {
       .get();
     const brewDocs = brewsRef.docs.map(doc => {
       const data = doc.data();
-      const normalizedData = { ...data, createdAt: new Date(data.createdAt.seconds) } as CreateBrewData;
+      const normalizedData = { ...data, createdAt: data.createdAt.toDate() } as CreateBrewData;
       return { id: doc.id, ...normalizedData };
     });
     return brewDocs;
