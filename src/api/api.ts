@@ -32,7 +32,10 @@ export class Api implements IApi {
   }
 
   async getBrews(): Promise<BrewData[]> {
-    const brewsRef = await this.db.collection("brews").get();
+    const brewsRef = await this.db
+      .collection("brews")
+      .orderBy("createdAt", "desc")
+      .get();
     const brewDocs = brewsRef.docs.map(doc => ({ id: doc.id, ...(doc.data() as CreateBrewData) }));
     return brewDocs;
   }
