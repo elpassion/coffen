@@ -24,13 +24,19 @@ describe("Brew", () => {
 
     await brewFlow.openBrewCustomization();
     expect(await brewFlow.hasCorrectInitialValuesForProcess(BrewingProcess.HarioV60)).toBe(true);
-    await brewFlow.customizeBrew({ waterDose: "305", coffeeWeight: "20", grindSize: GrindSize.MediumCoarse });
+    await brewFlow.customizeBrew({
+      waterDose: "305",
+      coffeeWeight: "20",
+      grindSize: GrindSize.MediumCoarse,
+      temperature: "69"
+    });
     await brewFlow.rateBrew();
     expect(
       await brewFlow.isDisplayingSummaryFor({
         coffeeName: "THE BARN",
         technique: BrewingTechnique.Drip,
         process: BrewingProcess.HarioV60,
+        temperature: "69",
         waterDose: "305",
         coffeeWeight: "20",
         grindSize: GrindSize.MediumCoarse
@@ -45,6 +51,7 @@ describe("Brew", () => {
         coffeeName: "THE BARN",
         technique: BrewingTechnique.Drip,
         process: BrewingProcess.HarioV60,
+        temperature: "69",
         waterDose: "305",
         coffeeWeight: "20",
         grindSize: GrindSize.MediumCoarse,
