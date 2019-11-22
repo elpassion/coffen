@@ -17,7 +17,7 @@ export const SelectField: React.FC<SelectFieldProps> = ({ name, label, initialVa
 );
 
 interface SelectFieldOptionProps {
-  value: string;
+  value: string | number;
 }
 
 export const SelectFieldOption: React.FC<SelectFieldOptionProps> = ({ value, children }) => (
