@@ -29,7 +29,7 @@ export interface BrewCardData {
 }
 
 export const BrewCard: React.FC<BrewCardData> = ({
-  brew: { coffeeName, coffeeWeight, grindSize, process, rating, technique, waterDose }
+  brew: { id, coffeeName, coffeeWeight, grindSize, process, rating, technique, waterDose }
 }) => {
   const [isExpanded, toggleExpand] = useState(false);
   return (
@@ -71,7 +71,7 @@ export const BrewCard: React.FC<BrewCardData> = ({
 
       <MetaRow>
         <TechniqueAuthor>
-          <img src="https://placekitten.com/48/48" alt="Author" /> Paweł Pariaszewski
+          <img src="https://placekitten.com/48/48" alt="Author" /> {id}
         </TechniqueAuthor>
 
         <StarRarting rating={parseInt(rating)} />
