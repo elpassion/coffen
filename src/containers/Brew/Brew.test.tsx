@@ -1,10 +1,6 @@
 import { BrewFlow } from "./Brew.flow";
 import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
 
-// set rating
-// add comment
-// save
-
 describe("Brew", () => {
   let brewFlow: BrewFlow;
   beforeEach(async () => {
@@ -17,7 +13,8 @@ describe("Brew", () => {
     expect(brewFlow.isAddingNewBrew).toBe(true);
 
     expect(brewFlow.isInErrorState).toBe(true);
-    await brewFlow.setCoffeeName("THE BARN");
+    await brewFlow.setCoffeeOrigin("Kenya");
+    await brewFlow.setCoffeeRoaster("THE BARN");
     await brewFlow.setBrewingMethod(BrewingTechnique.Drip);
     await brewFlow.setBrewingProcess(BrewingProcess.HarioV60);
     expect(brewFlow.isInErrorState).toBe(false);
@@ -33,7 +30,8 @@ describe("Brew", () => {
     await brewFlow.rateBrew();
     expect(
       await brewFlow.isDisplayingSummaryFor({
-        coffeeName: "THE BARN",
+        roaster: "THE BARN",
+        origin: "Kenya",
         technique: BrewingTechnique.Drip,
         process: BrewingProcess.HarioV60,
         temperature: "69",
@@ -48,7 +46,8 @@ describe("Brew", () => {
     await brewFlow.saveBrew();
     expect(
       brewFlow.hasSuccessfulySavedBrew({
-        coffeeName: "THE BARN",
+        roaster: "THE BARN",
+        origin: "Kenya",
         technique: BrewingTechnique.Drip,
         process: BrewingProcess.HarioV60,
         temperature: "69",

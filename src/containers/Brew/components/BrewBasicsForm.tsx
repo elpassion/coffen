@@ -7,7 +7,8 @@ import { Form } from "react-final-form";
 import { BrewingProcess, BrewingTechnique } from "../options";
 
 export interface BrewingBasicsFormValues {
-  coffeeName: string;
+  origin: string;
+  roaster: string;
   technique: BrewingTechnique;
   process: BrewingProcess;
 }
@@ -23,14 +24,16 @@ export const BrewBasicsForm: React.FC<BrewBasicsFormProps> = ({ onSubmit }) => {
       subscription={{}}
       validate={values => {
         const errors: ErrorsForValues<BrewingBasicsFormValues> = {};
-        if (!values.coffeeName) errors.coffeeName = "Required";
+        if (!values.origin) errors.origin = "Required";
+        if (!values.roaster) errors.roaster = "Required";
         if (!values.technique) errors.technique = "Required";
         if (!values.process) errors.process = "Required";
         return errors;
       }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <TextField name="coffeeName" label="Coffee name" />
+          <TextField name="origin" label="Origin" />
+          <TextField name="roaster" label="Roaster" />
           <SelectField name="technique" label="Technique" initialValue={BrewingTechnique.Drip}>
             <SelectFieldOption value={BrewingTechnique.Drip}>{BrewingTechnique.Drip}</SelectFieldOption>
           </SelectField>

@@ -11,7 +11,7 @@ export interface BrewData extends CreateBrewData {
 }
 
 export interface IApi {
-  createBrew(data: CreateBrewData): Promise<{}>;
+  createBrew(data: CreateBrewData): Promise<BrewData>;
   getBrews(): Promise<BrewData[]>;
 }
 
@@ -23,9 +23,9 @@ export class Api implements IApi {
   });
   private readonly db = this.firebaseApp.firestore();
 
-  async createBrew(data: CreateBrewData): Promise<{}> {
+  async createBrew(data: CreateBrewData): Promise<BrewData> {
     const brewRef = await this.db.collection("brews").add(data);
-    const brewDoc = (await brewRef.get()).data();
+    const brewDoc = (await brewRef.get()).data() as CreateBrewData;
     return { id: brewRef.id, ...brewDoc };
   }
 

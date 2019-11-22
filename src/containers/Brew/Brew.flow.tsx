@@ -31,8 +31,12 @@ export class BrewFlow {
     this.rateBrewButton.click();
   }
 
-  public async setCoffeeName(coffeeName: string) {
-    return this.coffeeNameInput.setValue(coffeeName);
+  public async setCoffeeOrigin(origin: string) {
+    return this.coffeeOriginInput.setValue(origin);
+  }
+
+  public async setCoffeeRoaster(roaster: string) {
+    return this.coffeeRoasterInput.setValue(roaster);
   }
 
   public async setBrewingMethod(brewingMethod: BrewingTechnique) {
@@ -75,7 +79,8 @@ export class BrewFlow {
     brewingData: BrewingBasicsFormValues & BrewingCustomizationFormValues
   ): Promise<boolean> {
     return (
-      !!getByText(this.container, `Coffee Name: ${brewingData.coffeeName}`) &&
+      !!getByText(this.container, `Origin: ${brewingData.origin}`) &&
+      !!getByText(this.container, `Roaster: ${brewingData.roaster}`) &&
       !!getByText(this.container, `Technique: ${brewingData.technique}`) &&
       !!getByText(this.container, `Water: ${brewingData.waterDose}`) &&
       !!getByText(this.container, `Temperature: ${brewingData.temperature}`) &&
@@ -106,8 +111,12 @@ export class BrewFlow {
     return new ButtonElement(this.container, "Add new brew");
   }
 
-  private get coffeeNameInput() {
-    return new TextInputElement(this.container, "Coffee name");
+  private get coffeeOriginInput() {
+    return new TextInputElement(this.container, "Origin");
+  }
+
+  private get coffeeRoasterInput() {
+    return new TextInputElement(this.container, "Roaster");
   }
 
   private get brewingMethodInput() {

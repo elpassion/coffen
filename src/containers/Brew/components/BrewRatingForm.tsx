@@ -29,7 +29,8 @@ export const BrewRatingForm: React.FC<BrewRatingFormProps> = ({ onSubmit, brewBa
       }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <p>Coffee Name: {brewBasics.coffeeName}</p>
+          <p>Origin: {brewBasics.origin}</p>
+          <p>Roaster: {brewBasics.roaster}</p>
           <p>Technique: {brewBasics.technique}</p>
           <p>Water: {brewCustomizationData.waterDose}</p>
           <p>Temperature: {brewCustomizationData.temperature}</p>
