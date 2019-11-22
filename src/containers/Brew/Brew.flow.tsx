@@ -47,10 +47,6 @@ export class BrewFlow {
     this.brewingProcessInput.setValue(brewingProcess);
   }
 
-  public async openBrewCustomization() {
-    this.openBrewCustomizationButton.click();
-  }
-
   public async customizeBrew({ coffeeWeight, grindSize, waterDose, temperature }: BrewingCustomizationFormValues) {
     this.coffeeWeightInput.setValue(coffeeWeight);
     this.waterDoseInput.setValue(waterDose);
@@ -90,14 +86,10 @@ export class BrewFlow {
   }
 
   public get isAddingNewBrew(): boolean {
-    return !!queryByText(this.container, "New brew");
+    return !!queryByText(this.container, "LET'S BREW");
   }
 
   public get isInErrorState(): boolean {
-    return this.openBrewCustomizationButton.isDisabled;
-  }
-
-  public get isInAnotherErrorState(): boolean {
     return this.saveBrewButton.isDisabled;
   }
 
@@ -149,10 +141,6 @@ export class BrewFlow {
 
   private get rateBrewButton() {
     return new ButtonElement(this.container, "Rate");
-  }
-
-  private get openBrewCustomizationButton() {
-    return new ButtonElement(this.container, "Customize brew");
   }
 
   private get saveBrewButton() {

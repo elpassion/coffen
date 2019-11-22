@@ -29,12 +29,12 @@ export const Brew = () => {
     <>
       <PageTitle>Let’s brew</PageTitle>
       <StepsWrapper>
-        {brewCustomizationData && brewBasics ? (
-          <BrewRatingForm onSubmit={saveBrew} brewBasics={brewBasics} brewCustomizationData={brewCustomizationData} />
-        ) : brewBasics ? (
+        {!brewBasics && <BrewBasicsForm onSubmit={newBrewBasics => setBrewBasics(newBrewBasics)} />}
+        {brewBasics && (
           <BrewCustomizationForm onSubmit={brewCustomizationData => setBrewCustomizationData(brewCustomizationData)} />
-        ) : (
-          <BrewBasicsForm onSubmit={newBrewBasics => setBrewBasics(newBrewBasics)} />
+        )}
+        {brewBasics && brewCustomizationData && (
+          <BrewRatingForm onSubmit={saveBrew} brewBasics={brewBasics} brewCustomizationData={brewCustomizationData} />
         )}
       </StepsWrapper>
     </>

@@ -12,14 +12,10 @@ describe("Brew", () => {
     await brewFlow.addNewBrew();
     expect(brewFlow.isAddingNewBrew).toBe(true);
 
-    expect(brewFlow.isInErrorState).toBe(true);
     await brewFlow.setCoffeeOrigin("Kenya");
     await brewFlow.setCoffeeRoaster("THE BARN");
     await brewFlow.setBrewingMethod(BrewingTechnique.Drip);
     await brewFlow.setBrewingProcess(BrewingProcess.HarioV60);
-    expect(brewFlow.isInErrorState).toBe(false);
-
-    await brewFlow.openBrewCustomization();
     expect(await brewFlow.hasCorrectInitialValuesForProcess(BrewingProcess.HarioV60)).toBe(true);
     await brewFlow.customizeBrew({
       waterDose: "305",
@@ -40,9 +36,9 @@ describe("Brew", () => {
         grindSize: GrindSize.MediumCoarse
       })
     ).toBe(true);
-    expect(brewFlow.isInAnotherErrorState).toBe(true);
+    expect(brewFlow.isInErrorState).toBe(true);
     await brewFlow.setRating("1");
-    expect(brewFlow.isInAnotherErrorState).toBe(false);
+    expect(brewFlow.isInErrorState).toBe(false);
     await brewFlow.saveBrew();
     expect(
       brewFlow.hasSuccessfulySavedBrew({
