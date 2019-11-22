@@ -19,7 +19,9 @@ export const Card = styled.li<{ animationDelay: number }>`
     ${({ animationDelay }) => (animationDelay ? `${animationDelay}s` : "0.5s")} forwards;
 `;
 
-export const ClickableWrapper = styled.div``;
+export const ClickableWrapper = styled.div`
+  cursor: pointer;
+`;
 
 export const TopRow = styled.div`
   display: flex;
