@@ -33,7 +33,7 @@ export const BrewCustomizationForm: React.FC<BrewCustomizationFormProps> = ({ on
               </SelectFieldOption>
             ))}
           </SelectField>
-          <SubmitButton title="Rate">Rate</SubmitButton>
+          <SubmitButton title="Rate">Enjoy the coffee</SubmitButton>
         </form>
       )}
     />

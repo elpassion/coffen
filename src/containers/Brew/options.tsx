@@ -3,7 +3,10 @@ export enum BrewingTechnique {
 }
 
 export enum BrewingProcess {
-  HarioV60 = "Hario v60"
+  HarioV60 = "Hario v60",
+  Wave = "Wave",
+  AeroPress = "Aeropress",
+  FrenchPress = "French"
 }
 
 export enum GrindSize {
