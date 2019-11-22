@@ -12,5 +12,3 @@ export const CupIcon: React.FC = props => {
     </svg>
   );
 };
-
-export default CupIcon;

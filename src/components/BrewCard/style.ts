@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { rem, rgba } from "polished";
 
-import { colorName, size, font } from "styles";
+import { colorName, size, font, transitions } from "styles";
 import { OswaldType } from "styles/commonStyles";
 
 const AVATAR_SIZE = 24;
@@ -15,6 +15,8 @@ export const Card = styled.li`
   box-shadow: ${rem(4)} ${rem(2)} ${rem(16)} ${rgba(colorName.shadows, 0.55)},
     ${rem(-4)} ${rem(-2)} ${rem(16)} ${colorName.white};
 `;
+
+export const ClickableWrapper = styled.div``;
 
 export const TopRow = styled.div`
   display: flex;
@@ -30,7 +32,7 @@ export const CoffeeOrigin = styled.span`
   text-transform: uppercase;
 `;
 
-export const CoffeeMeasures = styled.span`
+export const CoffeeMeasures = styled.span<{ isExpanded: boolean }>`
   ${OswaldType};
 
   display: flex;
@@ -45,15 +47,86 @@ export const CoffeeMeasures = styled.span`
     width: ${rem(19)};
     height: ${rem(14)};
   }
+
+  ${props =>
+    props.isExpanded &&
+    `
+        font-family: ${font.primary};
+      font-size: ${rem(font.size.small)};
+      font-weight: ${font.weight.regular};
+    `}
 `;
 export const CoffeeRoastery = styled.p`
   margin: ${rem(4)} 0 ${rem(10)};
   font-size: ${rem(font.size.small)};
 `;
 
-export const ExpandedDetails = styled.div`
-  height: 0;
+export const ExpandedDetails = styled.div<{ isExpanded: boolean }>`
+  height: ${rem(1)};
+  opacity: 0;
   overflow: hidden;
+  transition: all 0.8s ${transitions.spring};
+
+  ${props =>
+    props.isExpanded &&
+    `
+        opacity: 1;
+        height: ${rem(144)};
+    `}
+`;
+
+export const ExpandedElementBase = css`
+  margin: 0 0 ${rem(8)};
+  font-size: ${rem(font.size.normal)};
+`;
+
+export const BaseForIcons = css`
+  display: flex;
+  align-items: center;
+
+  & > svg {
+    display: block;
+    margin: ${rem(2)} ${rem(8)} 0 0;
+    width: ${rem(16)};
+    height: ${rem(16)};
+  }
+`;
+
+export const ExpandedTechnique = styled.p`
+  ${ExpandedElementBase};
+  ${OswaldType};
+
+  font-weight: ${font.weight.semiBold};
+`;
+
+export const ExpandedGrind = styled.p`
+  ${ExpandedElementBase};
+  ${OswaldType};
+  ${BaseForIcons};
+`;
+
+export const ExpandedWater = styled.p`
+  ${OswaldType};
+  ${BaseForIcons};
+
+  margin: 0 0 ${rem(size.defaultPadding)};
+`;
+
+export const ExpandedActions = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 ${rem(size.defaultPadding)};
+
+  & > button {
+    flex: 0 0 48%;
+  }
+`;
+
+export const ExpandedDate = styled.p`
+  margin: 0;
+  text-align: right;
+  font-size: ${rem(font.size.small)};
 `;
 
 export const MetaRow = styled.div`
