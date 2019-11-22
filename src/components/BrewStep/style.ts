@@ -3,7 +3,9 @@ import { rem } from "polished";
 
 import { colorName, font } from "styles";
 
-export const BrewStepWrapper = styled.li``;
+export const BrewStepWrapper = styled.li`
+  margin: 0 0 ${rem(16)};
+`;
 
 export const BrewStepIndicator = styled.div`
   display: flex;

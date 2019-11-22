@@ -31,23 +31,22 @@ export const Brew = () => {
       <PageTitle>Let’s brew</PageTitle>
       <StepsWrapper>
         <BrewStep step={1} label="Coffee">
-          <div>...</div>
+          {!brewBasics && <BrewBasicsForm onSubmit={newBrewBasics => setBrewBasics(newBrewBasics)} />}
         </BrewStep>
 
         <BrewStep step={2} label="Method">
-          <div>...</div>
+          {brewBasics && (
+            <BrewCustomizationForm
+              onSubmit={brewCustomizationData => setBrewCustomizationData(brewCustomizationData)}
+            />
+          )}
         </BrewStep>
 
         <BrewStep step={3} label="Technique">
-          <div>...</div>
+          {brewBasics && brewCustomizationData && (
+            <BrewRatingForm onSubmit={saveBrew} brewBasics={brewBasics} brewCustomizationData={brewCustomizationData} />
+          )}
         </BrewStep>
-        {!brewBasics && <BrewBasicsForm onSubmit={newBrewBasics => setBrewBasics(newBrewBasics)} />}
-        {brewBasics && (
-          <BrewCustomizationForm onSubmit={brewCustomizationData => setBrewCustomizationData(brewCustomizationData)} />
-        )}
-        {brewBasics && brewCustomizationData && (
-          <BrewRatingForm onSubmit={saveBrew} brewBasics={brewBasics} brewCustomizationData={brewCustomizationData} />
-        )}
       </StepsWrapper>
     </>
   );
