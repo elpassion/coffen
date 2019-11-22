@@ -3,7 +3,7 @@ import { SubmitButton } from "components/Form/SubmitButton";
 import { TextField } from "components/Form/TextField";
 import { ErrorsForValues } from "components/Form/types";
 import React from "react";
-import { Form } from "react-final-form";
+import { Form, FormSpy } from "react-final-form";
 import { BrewingProcess, BrewingTechnique } from "../options";
 
 export interface BrewingBasicsFormValues {
@@ -21,7 +21,6 @@ export const BrewBasicsForm: React.FC<BrewBasicsFormProps> = ({ onSubmit }) => {
   return (
     <Form<BrewingBasicsFormValues>
       onSubmit={onSubmit}
-      subscription={{}}
       validate={values => {
         const errors: ErrorsForValues<BrewingBasicsFormValues> = {};
         if (!values.origin) errors.origin = "Required";
@@ -30,17 +29,28 @@ export const BrewBasicsForm: React.FC<BrewBasicsFormProps> = ({ onSubmit }) => {
         if (!values.process) errors.process = "Required";
         return errors;
       }}
-      render={({ handleSubmit }) => (
+      render={({ handleSubmit, values }) => (
         <form onSubmit={handleSubmit}>
+          <FormSpy
+            subscription={{ valid: true, values: true }}
+            onChange={({ valid, values }) => {
+              valid && onSubmit(values as BrewingBasicsFormValues);
+            }}
+          />
           <TextField name="origin" label="Origin" />
           <TextField name="roaster" label="Roaster" />
-          <SelectField name="technique" label="Technique" initialValue={BrewingTechnique.Drip}>
-            <SelectFieldOption value={BrewingTechnique.Drip}>{BrewingTechnique.Drip}</SelectFieldOption>
-          </SelectField>
-          <SelectField name="process" label="Process" initialValue={BrewingProcess.HarioV60}>
-            <SelectFieldOption value={BrewingProcess.HarioV60}>{BrewingProcess.HarioV60}</SelectFieldOption>
-          </SelectField>
-          <SubmitButton title="Customize brew">Customize</SubmitButton>
+          {values.origin && values.roaster && (
+            <SelectField name="technique" label="Technique" initialValue="">
+              <SelectFieldOption value={""}></SelectFieldOption>
+              <SelectFieldOption value={BrewingTechnique.Drip}>{BrewingTechnique.Drip}</SelectFieldOption>
+            </SelectField>
+          )}
+          {values.technique && (
+            <SelectField name="process" label="Process" initialValue="">
+              <SelectFieldOption value={""}></SelectFieldOption>
+              <SelectFieldOption value={BrewingProcess.HarioV60}>{BrewingProcess.HarioV60}</SelectFieldOption>
+            </SelectField>
+          )}
         </form>
       )}
     />
