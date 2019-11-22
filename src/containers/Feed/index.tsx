@@ -13,7 +13,7 @@ export const Feed = () => {
 
       <FeedList>
         {data.map(brew => (
-          <BrewCard coffeeName={brew.coffeeName} key={brew.id} />
+          <BrewCard brew={brew} key={brew.id} />
         ))}
       </FeedList>
     </FeedWrapper>

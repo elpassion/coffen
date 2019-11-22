@@ -5,6 +5,8 @@ import { CoffeGrainIcon } from "components/Svg/CoffeGrainIcon";
 import { WaterDropIcon } from "components/Svg/WaterDropIcon";
 import { StarRarting } from "components/StarRarting";
 
+import { BrewData } from "api/api";
+
 import {
   Card,
   TopRow,
@@ -23,10 +25,12 @@ import {
 } from "./style";
 
 export interface BrewCardData {
-  coffeeName: string;
+  brew: BrewData;
 }
 
-export const BrewCard: React.FC<BrewCardData> = ({ coffeeName }) => {
+export const BrewCard: React.FC<BrewCardData> = ({
+  brew: { coffeeName, coffeeWeight, grindSize, process, rating, technique, waterDose }
+}) => {
   const [isExpanded, toggleExpand] = useState(false);
   return (
     <Card>
@@ -39,7 +43,7 @@ export const BrewCard: React.FC<BrewCardData> = ({ coffeeName }) => {
           <CoffeeOrigin>{coffeeName}</CoffeeOrigin>
 
           <CoffeeMeasures isExpanded={isExpanded}>
-            <CupIcon /> {isExpanded ? "v60" : "20.5g / 300ml"}
+            <CupIcon /> {isExpanded ? process : `${coffeeWeight}g / ${waterDose}ml`}
           </CoffeeMeasures>
         </TopRow>
 
@@ -47,14 +51,14 @@ export const BrewCard: React.FC<BrewCardData> = ({ coffeeName }) => {
       </ClickableWrapper>
 
       <ExpandedDetails isExpanded={isExpanded}>
-        <ExpandedTechnique>James Hoffman’s Ultimate v60</ExpandedTechnique>
+        <ExpandedTechnique>{technique}</ExpandedTechnique>
 
         <ExpandedGrind>
-          <CoffeGrainIcon /> 20.5g / Medium Fine grind
+          <CoffeGrainIcon /> {coffeeWeight}g / {grindSize} grind
         </ExpandedGrind>
 
         <ExpandedWater>
-          <WaterDropIcon /> 300ml / 98°C
+          <WaterDropIcon /> {waterDose}ml / 98°C
         </ExpandedWater>
 
         <ExpandedActions>
@@ -70,7 +74,7 @@ export const BrewCard: React.FC<BrewCardData> = ({ coffeeName }) => {
           <img src="https://placekitten.com/48/48" alt="Author" /> Paweł Pariaszewski
         </TechniqueAuthor>
 
-        <StarRarting rating={4} />
+        <StarRarting rating={parseInt(rating)} />
       </MetaRow>
     </Card>
   );

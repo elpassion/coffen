@@ -8,7 +8,7 @@ export interface StarRartingProps {
 }
 
 export const StarRarting: React.FC<StarRartingProps> = ({ rating }) => {
-  console.log(rating);
+  // console.log(rating);
 
   return (
     <RatingWrapper>
