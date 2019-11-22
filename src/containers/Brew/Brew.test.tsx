@@ -36,5 +36,10 @@ describe("Brew", () => {
         grindSize: GrindSize.MediumCoarse
       })
     ).toBe(true);
+    expect(brewFlow.isInAnotherErrorState).toBe(true);
+    await brewFlow.setRating("1");
+    expect(brewFlow.isInAnotherErrorState).toBe(false);
+    await brewFlow.saveBrew();
+    expect(brewFlow.hasSuccessfulySavedBrew).toBe(true);
   });
 });
