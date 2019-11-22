@@ -40,14 +40,18 @@ export const BrewBasicsForm: React.FC<BrewBasicsFormProps> = ({ onSubmit }) => {
           />
           <BrewStep step={1} label="Coffee">
             <TextField name="origin" label="Origin" />
+            <br />
             <TextField name="roaster" label="Roaster" />
+            <br />
           </BrewStep>
 
           {values.origin && values.roaster && (
             <BrewStep step={2} label="Technique">
               <SelectField name="technique" label="Technique" initialValue="">
                 <SelectFieldOption value={""}></SelectFieldOption>
+                <br />
                 <SelectFieldOption value={BrewingTechnique.Drip}>{BrewingTechnique.Drip}</SelectFieldOption>
+                <br />
               </SelectField>
             </BrewStep>
           )}
@@ -55,7 +59,9 @@ export const BrewBasicsForm: React.FC<BrewBasicsFormProps> = ({ onSubmit }) => {
             <BrewStep step={3} label="Method">
               <SelectField name="process" label="Process" initialValue="">
                 <SelectFieldOption value={""}></SelectFieldOption>
+                <br />
                 <SelectFieldOption value={BrewingProcess.HarioV60}>{BrewingProcess.HarioV60}</SelectFieldOption>
+                <br />
               </SelectField>
             </BrewStep>
           )}
