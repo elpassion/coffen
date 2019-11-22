@@ -24,8 +24,11 @@ export const BrewCustomizationForm: React.FC<BrewCustomizationFormProps> = ({ on
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <TextField name="waterDose" label="Water (ml)" initialValue="300" />
+          <br />
           <TextField name="coffeeWeight" label="Coffee weight (g)" initialValue="18" />
+          <br />
           <TextField name="temperature" label="Temperature (°C)" initialValue="95" />
+          <br />
           <SelectField name="grindSize" label="Grind size" initialValue={GrindSize.MediumFine}>
             {Object.values(GrindSize).map(grindSize => (
               <SelectFieldOption key={grindSize} value={grindSize}>
@@ -33,6 +36,7 @@ export const BrewCustomizationForm: React.FC<BrewCustomizationFormProps> = ({ on
               </SelectFieldOption>
             ))}
           </SelectField>
+          <br />
           <SubmitButton title="Rate">Enjoy the coffee</SubmitButton>
         </form>
       )}

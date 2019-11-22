@@ -36,6 +36,7 @@ export const BrewRatingForm: React.FC<BrewRatingFormProps> = ({ onSubmit, brewBa
           <p>Temperature: {brewCustomizationData.temperature}</p>
           <p>Coffee Weight: {brewCustomizationData.coffeeWeight}</p>
           <p>Grind Size: {brewCustomizationData.grindSize}</p>
+          <br />
           <SelectField name="rating" label="Rating">
             {Array.from({ length: 10 }, (_, index) => (
               <SelectFieldOption value={index + 1} key={index + 1}>
@@ -43,6 +44,7 @@ export const BrewRatingForm: React.FC<BrewRatingFormProps> = ({ onSubmit, brewBa
               </SelectFieldOption>
             ))}
           </SelectField>
+          <br />
           <SubmitButton title="Save brew">Save brew</SubmitButton>
         </form>
       )}
