@@ -7,12 +7,12 @@ import { size, font } from "styles";
 export const appearFromBottom = keyframes`
   0% {
     opacity: 0;
-    transform: scale(1.1) translateY(20%);
+    transform: translateY(20%);
   }
   
   100% {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translateY(0);
   }
 `;
 
