@@ -9,6 +9,8 @@ import { BrewCustomizationForm, BrewingCustomizationFormValues } from "./parts/B
 import { BrewRatingForm, BrewRatingFormValues } from "./parts/BrewRatingForm";
 import { PageTitle } from "components/PageTitle";
 
+import { StepsWrapper } from "./style";
+
 export const Brew = () => {
   const history = useHistory();
   const [brewBasics, setBrewBasics] = useState<BrewingBasicsFormValues | undefined>(undefined);
@@ -26,13 +28,15 @@ export const Brew = () => {
   return (
     <>
       <PageTitle>Let’s brew</PageTitle>
-      {brewCustomizationData && brewBasics ? (
-        <BrewRatingForm onSubmit={saveBrew} brewBasics={brewBasics} brewCustomizationData={brewCustomizationData} />
-      ) : brewBasics ? (
-        <BrewCustomizationForm onSubmit={brewCustomizationData => setBrewCustomizationData(brewCustomizationData)} />
-      ) : (
-        <BrewBasicsForm onSubmit={newBrewBasics => setBrewBasics(newBrewBasics)} />
-      )}
+      <StepsWrapper>
+        {brewCustomizationData && brewBasics ? (
+          <BrewRatingForm onSubmit={saveBrew} brewBasics={brewBasics} brewCustomizationData={brewCustomizationData} />
+        ) : brewBasics ? (
+          <BrewCustomizationForm onSubmit={brewCustomizationData => setBrewCustomizationData(brewCustomizationData)} />
+        ) : (
+          <BrewBasicsForm onSubmit={newBrewBasics => setBrewBasics(newBrewBasics)} />
+        )}
+      </StepsWrapper>
     </>
   );
 };
