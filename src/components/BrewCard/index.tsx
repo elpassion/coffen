@@ -32,7 +32,7 @@ export interface BrewCardData {
 
 export const BrewCard: React.FC<BrewCardData> = ({
   animationDelay,
-  brew: { id, roaster, coffeeWeight, grindSize, process, rating, technique, waterDose, origin }
+  brew: { id, roaster, coffeeWeight, grindSize, process, rating, technique, waterDose, origin, createdAt }
 }) => {
   console.log(dayjs("2012-02-03").format());
   const [isExpanded, toggleExpand] = useState(false);
