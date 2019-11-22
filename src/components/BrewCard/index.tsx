@@ -43,7 +43,7 @@ export const BrewCard: React.FC<BrewCardData> = ({
           <CoffeeOrigin>{coffeeName}</CoffeeOrigin>
 
           <CoffeeMeasures isExpanded={isExpanded}>
-            <CupIcon /> {isExpanded ? process : `${coffeeWeight}g / ${waterDose}ml`}
+            <CupIcon /> {isExpanded ? technique : `${coffeeWeight}g / ${waterDose}ml`}
           </CoffeeMeasures>
         </TopRow>
 
@@ -51,7 +51,7 @@ export const BrewCard: React.FC<BrewCardData> = ({
       </ClickableWrapper>
 
       <ExpandedDetails isExpanded={isExpanded}>
-        <ExpandedTechnique>{technique}</ExpandedTechnique>
+        <ExpandedTechnique>{process}</ExpandedTechnique>
 
         <ExpandedGrind>
           <CoffeGrainIcon /> {coffeeWeight}g / {grindSize} grind
