@@ -38,12 +38,12 @@ export const BrewRatingForm: React.FC<BrewRatingFormProps> = ({ onSubmit, brewBa
           <p>Grind Size: {brewCustomizationData.grindSize}</p>
           <SelectField name="rating" label="Rating">
             {Array.from({ length: 10 }, (_, index) => (
-              <SelectFieldOption value={index} key={index}>
-                {index}
+              <SelectFieldOption value={index + 1} key={index + 1}>
+                {index + 1}
               </SelectFieldOption>
             ))}
           </SelectField>
-          <SubmitButton title="Save brew"></SubmitButton>
+          <SubmitButton title="Save brew">Save brew</SubmitButton>
         </form>
       )}
     />
