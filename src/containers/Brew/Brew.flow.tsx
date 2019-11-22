@@ -1,4 +1,4 @@
-import { getByText, queryByText, render } from "@testing-library/react";
+import { getByText, queryByText, render, wait } from "@testing-library/react";
 import { App } from "containers/App";
 import React from "react";
 import { ButtonElement } from "testElements/Button.element";
@@ -8,11 +8,11 @@ import { BrewingBasicsFormValues } from "./components/BrewBasicsForm";
 import { BrewingCustomizationFormValues } from "./components/BrewCustomizationForm";
 import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
 import { Routing } from "utils/routing";
-import { Api, ApiContext, CreateBrewData } from "api/api";
+import { ApiContext, CreateBrewData, IApi } from "api/api";
 
 export class BrewFlow {
   static async render() {
-    const api: Api = { createBrew: jest.fn(), getBrews: jest.fn() };
+    const api: IApi = { createBrew: jest.fn(), getBrews: jest.fn().mockResolvedValue([]) };
     const { container } = render(
       <ApiContext.Provider value={api}>
         <App />
@@ -21,7 +21,7 @@ export class BrewFlow {
     return new BrewFlow(container, api);
   }
 
-  private constructor(private readonly container: HTMLElement, private readonly api: Api) {}
+  private constructor(private readonly container: HTMLElement, private readonly api: IApi) {}
 
   public async addNewBrew() {
     this.addNewBrewButton.click();
@@ -59,6 +59,7 @@ export class BrewFlow {
 
   public async saveBrew() {
     this.saveBrewButton.click();
+    await wait();
   }
 
   public async hasCorrectInitialValuesForProcess(brewingProcess: BrewingProcess): Promise<boolean> {
@@ -95,6 +96,7 @@ export class BrewFlow {
 
   public hasSuccessfulySavedBrew(brewingData: CreateBrewData): boolean {
     expect(this.api.createBrew).toHaveBeenCalledWith(brewingData);
+    expect(this.api.getBrews).toHaveBeenCalledTimes(2);
     return window.location.pathname === Routing.Feed;
   }
 
