@@ -24,11 +24,15 @@ export class Api implements IApi {
   private readonly db = this.firebaseApp.firestore();
 
   async createBrew(data: CreateBrewData): Promise<{}> {
-    return {};
+    const brewRef = await this.db.collection("brews").add(data);
+    const brewDoc = (await brewRef.get()).data();
+    return { id: brewRef.id, ...brewDoc };
   }
 
   async getBrews(): Promise<BrewData[]> {
-    return [];
+    const brewsRef = await this.db.collection("brews").get();
+    const brewDocs = brewsRef.docs.map(doc => ({ id: doc.id, ...(doc.data() as CreateBrewData) }));
+    return brewDocs;
   }
 }
 

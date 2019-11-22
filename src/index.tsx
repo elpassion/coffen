@@ -6,6 +6,7 @@ import WebFont from "webfontloader";
 import { GlobalStyle } from "styles";
 import { initStore } from "stores/initStore";
 import * as serviceWorker from "./serviceWorker";
+import { ApiContext, Api } from "api/api";
 
 WebFont.load({
   google: {
@@ -19,7 +20,9 @@ const render = () => {
   ReactDOM.render(
     <Provider store={initStore}>
       <GlobalStyle />
-      <App />
+      <ApiContext.Provider value={new Api()}>
+        <App />
+      </ApiContext.Provider>
     </Provider>,
     document.getElementById("root")
   );
