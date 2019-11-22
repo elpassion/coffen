@@ -36,7 +36,11 @@ export class Api implements IApi {
       .collection("brews")
       .orderBy("createdAt", "desc")
       .get();
-    const brewDocs = brewsRef.docs.map(doc => ({ id: doc.id, ...(doc.data() as CreateBrewData) }));
+    const brewDocs = brewsRef.docs.map(doc => {
+      const data = doc.data();
+      const normalizedData = { ...data, createdAt: new Date(data.createdAt.seconds) } as CreateBrewData;
+      return { id: doc.id, ...normalizedData };
+    });
     return brewDocs;
   }
 }
