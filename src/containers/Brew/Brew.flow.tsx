@@ -31,8 +31,12 @@ export class BrewFlow {
     this.rateBrewButton.click();
   }
 
-  public async setCoffeeName(coffeeName: string) {
-    return this.coffeeNameInput.setValue(coffeeName);
+  public async setCoffeeOrigin(origin: string) {
+    return this.coffeeOriginInput.setValue(origin);
+  }
+
+  public async setCoffeeRoaster(roaster: string) {
+    return this.coffeeRoasterInput.setValue(roaster);
   }
 
   public async setBrewingMethod(brewingMethod: BrewingTechnique) {
@@ -47,9 +51,10 @@ export class BrewFlow {
     this.openBrewCustomizationButton.click();
   }
 
-  public async customizeBrew({ coffeeWeight, grindSize, waterDose }: BrewingCustomizationFormValues) {
+  public async customizeBrew({ coffeeWeight, grindSize, waterDose, temperature }: BrewingCustomizationFormValues) {
     this.coffeeWeightInput.setValue(coffeeWeight);
     this.waterDoseInput.setValue(waterDose);
+    this.temperatureInput.setValue(temperature);
     this.grindSizeInput.setValue(grindSize);
   }
 
@@ -74,9 +79,11 @@ export class BrewFlow {
     brewingData: BrewingBasicsFormValues & BrewingCustomizationFormValues
   ): Promise<boolean> {
     return (
-      !!getByText(this.container, `Coffee Name: ${brewingData.coffeeName}`) &&
+      !!getByText(this.container, `Origin: ${brewingData.origin}`) &&
+      !!getByText(this.container, `Roaster: ${brewingData.roaster}`) &&
       !!getByText(this.container, `Technique: ${brewingData.technique}`) &&
       !!getByText(this.container, `Water: ${brewingData.waterDose}`) &&
+      !!getByText(this.container, `Temperature: ${brewingData.temperature}`) &&
       !!getByText(this.container, `Coffee Weight: ${brewingData.coffeeWeight}`) &&
       !!getByText(this.container, `Grind Size: ${brewingData.grindSize}`)
     );
@@ -104,8 +111,12 @@ export class BrewFlow {
     return new ButtonElement(this.container, "Add new brew");
   }
 
-  private get coffeeNameInput() {
-    return new TextInputElement(this.container, "Coffee name");
+  private get coffeeOriginInput() {
+    return new TextInputElement(this.container, "Origin");
+  }
+
+  private get coffeeRoasterInput() {
+    return new TextInputElement(this.container, "Roaster");
   }
 
   private get brewingMethodInput() {
@@ -117,11 +128,15 @@ export class BrewFlow {
   }
 
   private get waterDoseInput() {
-    return new TextInputElement(this.container, "Water");
+    return new TextInputElement(this.container, "Water (ml)");
   }
 
   private get coffeeWeightInput() {
-    return new TextInputElement(this.container, "Coffee weight");
+    return new TextInputElement(this.container, "Coffee weight (g)");
+  }
+
+  private get temperatureInput() {
+    return new TextInputElement(this.container, "Temperature (°C)");
   }
 
   private get grindSizeInput() {

@@ -8,6 +8,7 @@ import { GrindSize } from "../options";
 export interface BrewingCustomizationFormValues {
   waterDose: string;
   coffeeWeight: string;
+  temperature: string;
   grindSize: GrindSize;
 }
 
@@ -22,8 +23,9 @@ export const BrewCustomizationForm: React.FC<BrewCustomizationFormProps> = ({ on
       subscription={{}}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <TextField name="waterDose" label="Water" initialValue="300" />
-          <TextField name="coffeeWeight" label="Coffee weight" initialValue="18" />
+          <TextField name="waterDose" label="Water (ml)" initialValue="300" />
+          <TextField name="coffeeWeight" label="Coffee weight (g)" initialValue="18" />
+          <TextField name="temperature" label="Temperature (°C)" initialValue="95" />
           <SelectField name="grindSize" label="Grind size" initialValue={GrindSize.MediumFine}>
             {Object.values(GrindSize).map(grindSize => (
               <SelectFieldOption key={grindSize} value={grindSize}>

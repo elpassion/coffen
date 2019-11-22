@@ -30,8 +30,8 @@ export interface BrewCardData {
 }
 
 export const BrewCard: React.FC<BrewCardData> = ({
-  brew: { id, coffeeName, coffeeWeight, grindSize, process, rating, technique, waterDose },
-  animationDelay
+  animationDelay,
+  brew: { id, roaster, coffeeWeight, grindSize, process, rating, technique, waterDose, origin }
 }) => {
   console.log(animationDelay);
   const [isExpanded, toggleExpand] = useState(false);
@@ -43,14 +43,14 @@ export const BrewCard: React.FC<BrewCardData> = ({
         }}
       >
         <TopRow>
-          <CoffeeOrigin>{coffeeName}</CoffeeOrigin>
+          <CoffeeOrigin>{origin}</CoffeeOrigin>
 
           <CoffeeMeasures isExpanded={isExpanded}>
             <CupIcon /> {isExpanded ? technique : `${coffeeWeight}g / ${waterDose}ml`}
           </CoffeeMeasures>
         </TopRow>
 
-        <CoffeeRoastery>Nomad</CoffeeRoastery>
+        <CoffeeRoastery>{roaster}</CoffeeRoastery>
       </ClickableWrapper>
 
       <ExpandedDetails isExpanded={isExpanded}>

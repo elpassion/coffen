@@ -29,15 +29,17 @@ export const BrewRatingForm: React.FC<BrewRatingFormProps> = ({ onSubmit, brewBa
       }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <p>Coffee Name: {brewBasics.coffeeName}</p>
+          <p>Origin: {brewBasics.origin}</p>
+          <p>Roaster: {brewBasics.roaster}</p>
           <p>Technique: {brewBasics.technique}</p>
           <p>Water: {brewCustomizationData.waterDose}</p>
+          <p>Temperature: {brewCustomizationData.temperature}</p>
           <p>Coffee Weight: {brewCustomizationData.coffeeWeight}</p>
           <p>Grind Size: {brewCustomizationData.grindSize}</p>
           <SelectField name="rating" label="Rating">
             {Array.from({ length: 10 }, (_, index) => (
               <SelectFieldOption value={index} key={index}>
-                ${index}
+                {index}
               </SelectFieldOption>
             ))}
           </SelectField>
