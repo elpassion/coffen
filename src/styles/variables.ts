@@ -4,7 +4,9 @@ export const colors = {
   shiraz: "#ba0b1b",
   manatee: "#989a9d",
   abbey: "#454648",
+  white: "#ffffff",
   ivory: "#fffff4",
+  springWood: "#f7f7ee",
   khaki: "#bfb088"
 };
 
@@ -15,7 +17,9 @@ export const colorName = {
   gray: colors.abbey,
   lightGray: colors.manatee,
   beige: colors.ivory,
-  shadows: colors.khaki
+  shadows: colors.khaki,
+  borders: colors.springWood,
+  white: colors.white
 };
 
 export const transitions = {
@@ -27,7 +31,9 @@ export const font = {
   secondary: "Oswald, sans-serif",
   size: {
     tiny: 10,
-    normal: 16
+    small: 12,
+    normal: 16,
+    medium: 20
   },
   weight: {
     regular: 400,

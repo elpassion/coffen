@@ -1,7 +1,7 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { rem } from "polished";
 
-import { size } from "styles";
+import { size, font } from "styles";
 
 // Motion
 export const appearFromBottom = keyframes`
@@ -17,6 +17,11 @@ export const appearFromBottom = keyframes`
 `;
 
 // Shared styles
+
+export const OswaldType = css`
+  font-family: ${font.secondary};
+`;
+
 export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
