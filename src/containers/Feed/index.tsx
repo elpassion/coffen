@@ -23,7 +23,7 @@ export const Feed = () => {
 
       <FeedList>
         {data.map((brew, i) => (
-          <BrewCard animationDelay={(i + 1) * 0.3} brew={brew} key={brew.id} />
+          <BrewCard animationDelay={(i + 1) * 0.25} brew={brew} key={brew.id} />
         ))}
       </FeedList>
     </FeedWrapper>

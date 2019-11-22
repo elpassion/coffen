@@ -33,7 +33,6 @@ export const BrewCard: React.FC<BrewCardData> = ({
   animationDelay,
   brew: { id, roaster, coffeeWeight, grindSize, process, rating, technique, waterDose, origin }
 }) => {
-  console.log(animationDelay);
   const [isExpanded, toggleExpand] = useState(false);
   return (
     <Card animationDelay={animationDelay}>
