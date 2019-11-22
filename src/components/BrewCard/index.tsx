@@ -34,7 +34,6 @@ export const BrewCard: React.FC<BrewCardData> = ({
   animationDelay,
   brew: { id, roaster, coffeeWeight, grindSize, process, rating, technique, waterDose, origin, createdAt }
 }) => {
-  console.log(createdAt);
   const [isExpanded, toggleExpand] = useState(false);
   return (
     <Card animationDelay={animationDelay}>
@@ -70,7 +69,7 @@ export const BrewCard: React.FC<BrewCardData> = ({
           <button>Brew</button>
         </ExpandedActions>
 
-        <ExpandedDate>{dayjs(createdAt).format("DD-MM-YYYY")}</ExpandedDate>
+        <ExpandedDate>{dayjs(createdAt).format("DD/MM/YYYY")}</ExpandedDate>
       </ExpandedDetails>
 
       <MetaRow>
