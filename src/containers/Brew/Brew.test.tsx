@@ -40,6 +40,16 @@ describe("Brew", () => {
     await brewFlow.setRating("1");
     expect(brewFlow.isInAnotherErrorState).toBe(false);
     await brewFlow.saveBrew();
-    expect(brewFlow.hasSuccessfulySavedBrew).toBe(true);
+    expect(
+      brewFlow.hasSuccessfulySavedBrew({
+        coffeeName: "THE BARN",
+        technique: BrewingTechnique.Drip,
+        process: BrewingProcess.HarioV60,
+        waterDose: "305",
+        coffeeWeight: "20",
+        grindSize: GrindSize.MediumCoarse,
+        rating: "1"
+      })
+    ).toBe(true);
   });
 });

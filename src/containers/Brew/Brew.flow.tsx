@@ -8,14 +8,20 @@ import { BrewingBasicsFormValues } from "./components/BrewBasicsForm";
 import { BrewingCustomizationFormValues } from "./components/BrewCustomizationForm";
 import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
 import { Routing } from "utils/routing";
+import { Api, ApiContext, CreateBrewData } from "api/api";
 
 export class BrewFlow {
   static async render() {
-    const { container } = render(<App />);
-    return new BrewFlow(container);
+    const api: Api = { createBrew: jest.fn(), getBrews: jest.fn() };
+    const { container } = render(
+      <ApiContext.Provider value={api}>
+        <App />
+      </ApiContext.Provider>
+    );
+    return new BrewFlow(container, api);
   }
 
-  private constructor(private readonly container: HTMLElement) {}
+  private constructor(private readonly container: HTMLElement, private readonly api: Api) {}
 
   public async addNewBrew() {
     this.addNewBrewButton.click();
@@ -87,7 +93,8 @@ export class BrewFlow {
     return this.saveBrewButton.isDisabled;
   }
 
-  public get hasSuccessfulySavedBrew(): boolean {
+  public hasSuccessfulySavedBrew(brewingData: CreateBrewData): boolean {
+    expect(this.api.createBrew).toHaveBeenCalledWith(brewingData);
     return window.location.pathname === Routing.Feed;
   }
 

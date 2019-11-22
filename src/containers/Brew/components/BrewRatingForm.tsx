@@ -7,8 +7,8 @@ import { BrewingBasicsFormValues } from "./BrewBasicsForm";
 import { BrewingCustomizationFormValues } from "./BrewCustomizationForm";
 
 export interface BrewRatingFormValues {
-  rating: number;
-  comment: string;
+  rating: string;
+  comment?: string;
 }
 
 export interface BrewRatingFormProps {
