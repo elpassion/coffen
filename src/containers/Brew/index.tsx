@@ -16,7 +16,7 @@ export const Brew = () => {
   const api = useApi();
   const saveBrew = async (brewRatingValues: BrewRatingFormValues) => {
     if (!brewBasics || !brewCustomizationData) return;
-    await api.createBrew({ ...brewBasics, ...brewCustomizationData, ...brewRatingValues });
+    await api.createBrew({ ...brewBasics, ...brewCustomizationData, ...brewRatingValues, createdAt: new Date() });
     history.push(Routing.Feed);
   };
 
