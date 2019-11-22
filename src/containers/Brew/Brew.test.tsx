@@ -54,7 +54,8 @@ describe("Brew", () => {
         waterDose: "305",
         coffeeWeight: "20",
         grindSize: GrindSize.MediumCoarse,
-        rating: "1"
+        rating: "1",
+        createdAt: new Date()
       })
     ).toBe(true);
   });

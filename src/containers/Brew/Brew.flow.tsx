@@ -102,7 +102,7 @@ export class BrewFlow {
   }
 
   public hasSuccessfulySavedBrew(brewingData: CreateBrewData): boolean {
-    expect(this.api.createBrew).toHaveBeenCalledWith(brewingData);
+    expect(this.api.createBrew).toHaveBeenCalledWith({ ...brewingData, createdAt: expect.any(Date) });
     expect(this.api.getBrews).toHaveBeenCalledTimes(2);
     return window.location.pathname === Routing.Feed;
   }

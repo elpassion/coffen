@@ -4,7 +4,9 @@ import { BrewingBasicsFormValues } from "containers/Brew/components/BrewBasicsFo
 import { BrewingCustomizationFormValues } from "containers/Brew/components/BrewCustomizationForm";
 import { BrewRatingFormValues } from "containers/Brew/components/BrewRatingForm";
 
-export interface CreateBrewData extends BrewingBasicsFormValues, BrewingCustomizationFormValues, BrewRatingFormValues {}
+export interface CreateBrewData extends BrewingBasicsFormValues, BrewingCustomizationFormValues, BrewRatingFormValues {
+  createdAt: Date;
+}
 
 export interface BrewData extends CreateBrewData {
   id: string;
