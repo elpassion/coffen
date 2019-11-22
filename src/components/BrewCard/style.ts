@@ -15,9 +15,8 @@ export const Card = styled.li<{ animationDelay: number }>`
   box-shadow: ${rem(4)} ${rem(2)} ${rem(16)} ${rgba(colorName.shadows, 0.55)},
     ${rem(-4)} ${rem(-2)} ${rem(16)} ${colorName.white};
   opacity: 0;
-  animation: ${appearFromBottom} 0.7s ${transitions.spring} ${({ animationDelay }) =>
-  animationDelay ? `${animationDelay}s` : "0.5s"}; forwards;
-
+  animation: ${appearFromBottom} 0.7s ${transitions.spring}
+    ${({ animationDelay }) => (animationDelay ? `${animationDelay}s` : "0.5s")} forwards;
 `;
 
 export const ClickableWrapper = styled.div``;
