@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
+
 import { Routing } from "utils/routing";
-import { BrewBasicsForm, BrewingBasicsFormValues } from "./components/BrewBasicsForm";
-import { BrewCustomizationForm, BrewingCustomizationFormValues } from "./components/BrewCustomizationForm";
-import { BrewRatingForm, BrewRatingFormValues } from "./components/BrewRatingForm";
 import { useApi } from "api/api";
+
+import { BrewBasicsForm, BrewingBasicsFormValues } from "./parts/BrewBasicsForm";
+import { BrewCustomizationForm, BrewingCustomizationFormValues } from "./parts/BrewCustomizationForm";
+import { BrewRatingForm, BrewRatingFormValues } from "./parts/BrewRatingForm";
+import { PageTitle } from "components/PageTitle";
 
 export const Brew = () => {
   const history = useHistory();
@@ -22,7 +25,7 @@ export const Brew = () => {
 
   return (
     <>
-      <h1>New brew</h1>
+      <PageTitle>Let’s brew</PageTitle>
       {brewCustomizationData && brewBasics ? (
         <BrewRatingForm onSubmit={saveBrew} brewBasics={brewBasics} brewCustomizationData={brewCustomizationData} />
       ) : brewBasics ? (

@@ -3,9 +3,10 @@ import { useApi, useApiCall } from "api/api";
 
 import { BrewCard } from "components/BrewCard";
 import { LoadingCup } from "components/Svg/LoadingCup";
+import { PageTitle } from "components/PageTitle";
 
 import { LoaderWrapper } from "styles/commonStyles";
-import { FeedHeader, FeedList, FeedWrapper } from "./style";
+import { FeedList, FeedWrapper } from "./style";
 
 export const Feed = () => {
   const api = useApi();
@@ -13,7 +14,7 @@ export const Feed = () => {
 
   return (
     <FeedWrapper>
-      <FeedHeader>Feed</FeedHeader>
+      <PageTitle>Feed</PageTitle>
 
       {isLoading && (
         <LoaderWrapper>
