@@ -26,14 +26,17 @@ import {
 
 export interface BrewCardData {
   brew: BrewData;
+  animationDelay: number;
 }
 
 export const BrewCard: React.FC<BrewCardData> = ({
-  brew: { id, coffeeName, coffeeWeight, grindSize, process, rating, technique, waterDose }
+  brew: { id, coffeeName, coffeeWeight, grindSize, process, rating, technique, waterDose },
+  animationDelay
 }) => {
+  console.log(animationDelay);
   const [isExpanded, toggleExpand] = useState(false);
   return (
-    <Card>
+    <Card animationDelay={animationDelay}>
       <ClickableWrapper
         onClick={() => {
           toggleExpand(!isExpanded);

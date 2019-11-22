@@ -17,7 +17,6 @@ export const appearFromBottom = keyframes`
 `;
 
 // Shared styles
-
 export const OswaldType = css`
   font-family: ${font.secondary};
 `;
@@ -26,4 +25,12 @@ export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: ${rem(size.defaultPadding)};
+`;
+
+export const LoaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: ${rem(160)};
 `;

@@ -2,11 +2,11 @@ import styled, { css } from "styled-components";
 import { rem, rgba } from "polished";
 
 import { colorName, size, font, transitions } from "styles";
-import { OswaldType } from "styles/commonStyles";
+import { OswaldType, appearFromBottom } from "styles/commonStyles";
 
 const AVATAR_SIZE = 24;
 
-export const Card = styled.li`
+export const Card = styled.li<{ animationDelay: number }>`
   margin: 0 0 ${rem(size.defaultPadding)};
   padding: ${rem(size.defaultPadding)};
   background: ${colorName.beige};
@@ -14,6 +14,10 @@ export const Card = styled.li`
   border-radius: ${rem(size.borderRadius / 1.5)};
   box-shadow: ${rem(4)} ${rem(2)} ${rem(16)} ${rgba(colorName.shadows, 0.55)},
     ${rem(-4)} ${rem(-2)} ${rem(16)} ${colorName.white};
+  opacity: 0;
+  animation: ${appearFromBottom} 0.7s ${transitions.spring} ${({ animationDelay }) =>
+  animationDelay ? `${animationDelay}s` : "0.5s"}; forwards;
+
 `;
 
 export const ClickableWrapper = styled.div``;
