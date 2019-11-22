@@ -1,42 +1,21 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router";
+import React from "react";
 
-import { Routing } from "utils/routing";
-import { useApi } from "api/api";
+import { BrewStepWrapper, BrewStepIndicator, BrewStepCount, BrewStepLabel, BrewStepsDetails } from "./style";
 
-import { BrewBasicsForm, BrewingBasicsFormValues } from "./parts/BrewBasicsForm";
-import { BrewCustomizationForm, BrewingCustomizationFormValues } from "./parts/BrewCustomizationForm";
-import { BrewRatingForm, BrewRatingFormValues } from "./parts/BrewRatingForm";
-import { PageTitle } from "components/PageTitle";
+export interface BrewStepProps {
+  step: number;
+  label: string;
+}
 
-import { StepsWrapper } from "./style";
-
-export const Brew = () => {
-  const history = useHistory();
-  const [brewBasics, setBrewBasics] = useState<BrewingBasicsFormValues | undefined>(undefined);
-  const [brewCustomizationData, setBrewCustomizationData] = useState<BrewingCustomizationFormValues | undefined>(
-    undefined
-  );
-
-  const api = useApi();
-  const saveBrew = async (brewRatingValues: BrewRatingFormValues) => {
-    if (!brewBasics || !brewCustomizationData) return;
-    await api.createBrew({ ...brewBasics, ...brewCustomizationData, ...brewRatingValues, createdAt: new Date() });
-    history.push(Routing.Feed);
-  };
-
+export const BrewStep: React.FC<BrewStepProps> = ({ step, label, children }) => {
   return (
-    <>
-      <PageTitle>Let’s brew</PageTitle>
-      <StepsWrapper>
-        {!brewBasics && <BrewBasicsForm onSubmit={newBrewBasics => setBrewBasics(newBrewBasics)} />}
-        {brewBasics && (
-          <BrewCustomizationForm onSubmit={brewCustomizationData => setBrewCustomizationData(brewCustomizationData)} />
-        )}
-        {brewBasics && brewCustomizationData && (
-          <BrewRatingForm onSubmit={saveBrew} brewBasics={brewBasics} brewCustomizationData={brewCustomizationData} />
-        )}
-      </StepsWrapper>
-    </>
+    <BrewStepWrapper>
+      <BrewStepIndicator>
+        <BrewStepCount>{step}</BrewStepCount>
+        <BrewStepLabel>{label}</BrewStepLabel>
+      </BrewStepIndicator>
+
+      <BrewStepsDetails>{children}</BrewStepsDetails>
+    </BrewStepWrapper>
   );
 };
