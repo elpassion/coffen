@@ -15,12 +15,12 @@ export const TabBar: React.FC = () => {
     <TabBarWrapper>
       <NavItemWrapper>
         <MenuItem exact to={Routing.Feed} label="Feed" icon={<FeedIcon />} />
-        <MenuItem exact to={Routing.Brew} label="Technique" icon={<TechniqueIcon />} />
+        <MenuItem exact to={Routing.Techniques} label="Techniques" icon={<TechniqueIcon />} />
       </NavItemWrapper>
 
       <NavItemWrapper>
-        <MenuItem exact to={Routing.Brew} label="Favorite" icon={<FavoriteIcon />} />
-        <MenuItem exact to={Routing.Brew} label="Settings" icon={<SettingsIcon />} />
+        <MenuItem exact to={Routing.Favorites} label="Favorites" icon={<FavoriteIcon />} />
+        <MenuItem exact to={Routing.Settings} label="Settings" icon={<SettingsIcon />} />
       </NavItemWrapper>
 
       <BrewButton title="Add new brew" to={Routing.Brew}>

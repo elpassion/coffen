@@ -1,4 +1,3 @@
-import { TabbedWrapper } from "components/TabbedWrapper";
 import React, { useState } from "react";
 import { BrewBasicsForm, BrewingBasicsFormValues } from "./components/BrewBasicsForm";
 import { BrewCustomizationForm, BrewingCustomizationFormValues } from "./components/BrewCustomizationForm";
@@ -10,7 +9,7 @@ export const Brew = () => {
   );
 
   return (
-    <TabbedWrapper>
+    <>
       <h1>New brew</h1>
       {brewCustomizationData && brewBasics ? (
         <div>
@@ -25,6 +24,6 @@ export const Brew = () => {
       ) : (
         <BrewBasicsForm onSubmit={newBrewBasics => setBrewBasics(newBrewBasics)} />
       )}
-    </TabbedWrapper>
+    </>
   );
 };

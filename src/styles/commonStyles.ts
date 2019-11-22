@@ -1,8 +1,22 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { rem } from "polished";
 
 import { size } from "styles";
 
+// Motion
+export const appearFromBottom = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(1.1) translateY(20%);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+`;
+
+// Shared styles
 export const Container = styled.div`
   width: 100%;
   margin: 0 auto;

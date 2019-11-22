@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { rem, rgba } from "polished";
 import { Link, NavLink } from "react-router-dom";
 
-import { colorName, size, font } from "styles";
+import { colorName, size, font, transitions } from "styles";
+import { appearFromBottom } from "styles/commonStyles";
 
 const TABBAR_SAFE_AREA = size.tabBarHeight - size.defaultPadding / 2;
 const ICON_SIZE = 24;
@@ -39,6 +40,7 @@ export const TabBarWrapper = styled.nav`
   background: ${colorName.beige};
   box-shadow: ${rem(4)} ${rem(2)} ${rem(16)} ${rgba(colorName.shadows, 0.2)};
   z-index: 10;
+  animation: ${appearFromBottom} 0.7s ${transitions.spring} 0.5s forwards;
 `;
 
 export const NavItemWrapper = styled.div`
@@ -94,5 +96,5 @@ export const IconWrapper = styled.div`
 
 export const MenuLabel = styled.span`
   font-size: ${rem(font.size.tiny)};
-  transition: color 2s ease-in;
+  transition: color 0.3s ${transitions.spring};
 `;
