@@ -1,5 +1,6 @@
 import { BrewFlow } from "./Brew.flow";
 import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
+import { waitForDomChange } from "@testing-library/dom";
 
 describe("Brew", () => {
   let brewFlow: BrewFlow;

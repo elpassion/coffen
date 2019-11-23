@@ -1,4 +1,4 @@
-import { getByText, queryByText, render, wait } from "@testing-library/react";
+import { getByText, queryByText, render, wait, prettyDOM } from "@testing-library/react";
 import { App } from "containers/App";
 import React from "react";
 import { ButtonElement } from "testElements/Button.element";
@@ -9,6 +9,7 @@ import { BrewingCustomizationFormValues } from "./parts/BrewCustomizationForm";
 import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
 import { Routing } from "utils/routing";
 import { ApiContext, CreateBrewData, IApi } from "api/api";
+import { RadioInputElement } from "testElements/RadioInput.element";
 
 export class BrewFlow {
   static async render() {
@@ -86,7 +87,7 @@ export class BrewFlow {
   }
 
   public get isAddingNewBrew(): boolean {
-    return !!queryByText(this.container, "LET'S BREW");
+    return window.location.pathname === Routing.Brew;
   }
 
   public get isInErrorState(): boolean {
@@ -112,7 +113,7 @@ export class BrewFlow {
   }
 
   private get brewingMethodInput() {
-    return new SelectInputElement<BrewingTechnique>(this.container, "Technique");
+    return new RadioInputElement<BrewingTechnique>(this.container, "Pick technique");
   }
 
   private get brewingProcessInput() {
