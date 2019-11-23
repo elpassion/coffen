@@ -10,7 +10,7 @@ import { FeedList, FeedWrapper } from "./style";
 
 export const Feed = () => {
   const api = useApi();
-  const { data, isLoading } = useApiCall(() => api.getBrews(), []);
+  const { data, isLoading } = useApiCall(api.getBrews, []);
 
   return (
     <FeedWrapper>

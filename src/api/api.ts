@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import firebase from "firebase";
 import { BrewingBasicsFormValues } from "containers/Brew/parts/BrewBasicsForm";
 import { BrewingCustomizationFormValues } from "containers/Brew/parts/BrewCustomizationForm";
@@ -25,13 +25,13 @@ export class Api implements IApi {
   });
   private readonly db = this.firebaseApp.firestore();
 
-  async createBrew(data: CreateBrewData): Promise<BrewData> {
+  createBrew = async (data: CreateBrewData): Promise<BrewData> => {
     const brewRef = await this.db.collection("brews").add(data);
     const brewDoc = (await brewRef.get()).data() as CreateBrewData;
     return { id: brewRef.id, ...brewDoc };
-  }
+  };
 
-  async getBrews(): Promise<BrewData[]> {
+  getBrews = async (): Promise<BrewData[]> => {
     const brewsRef = await this.db
       .collection("brews")
       .orderBy("createdAt", "desc")
@@ -42,7 +42,7 @@ export class Api implements IApi {
       return { id: doc.id, ...normalizedData };
     });
     return brewDocs;
-  }
+  };
 }
 
 export const ApiContext = React.createContext<IApi>({} as IApi);
@@ -56,16 +56,16 @@ export const useApiCall = <ResponseData>(
   const [data, setData] = useState<ResponseData>(initialState);
   const [isLoading, setIsLoading] = useState(false);
 
-  const getBrews = async () => {
+  const request = useCallback(async () => {
     setIsLoading(true);
     const data = await fn();
     setData(data);
     setIsLoading(false);
-  };
+  }, [fn]);
 
   useEffect(() => {
-    getBrews();
-  }, []);
+    request();
+  }, [request]);
 
   return { isLoading, data };
 };
