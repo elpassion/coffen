@@ -1,6 +1,8 @@
+import { supressActWarnings } from "test/utils";
 import { BrewFlow } from "./Brew.flow";
 import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
-import { screenshot } from "test/utils";
+
+supressActWarnings();
 
 describe("Brew", () => {
   let brewFlow: BrewFlow;

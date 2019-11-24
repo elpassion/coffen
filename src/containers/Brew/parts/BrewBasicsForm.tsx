@@ -1,15 +1,11 @@
 import { BrewStep } from "components/BrewStep";
+import { RadioField, RadioFieldOption } from "components/Form/RadioField";
 import { SelectField, SelectFieldOption } from "components/Form/SelectField";
 import { TextField } from "components/Form/TextField";
 import { ErrorsForValues } from "components/Form/types";
-import { CupIcon } from "components/Svg/CupIcon";
-import { rem, rgba } from "polished";
 import React from "react";
-import { Field, Form, FormSpy } from "react-final-form";
-import styled from "styled-components";
-import { colorName } from "styles";
+import { Form, FormSpy } from "react-final-form";
 import { BrewingProcess, BrewingTechnique } from "../options";
-import { RadioField, RadioFieldOption } from "components/Form/RadioField";
 
 export interface BrewingBasicsFormValues {
   origin: string;
@@ -63,9 +59,7 @@ export const BrewBasicsForm: React.FC<BrewBasicsFormProps> = ({ onSubmit }) => {
             <BrewStep step={3} label="Method">
               <SelectField name="process" label="Process" initialValue="">
                 <SelectFieldOption value={""}></SelectFieldOption>
-                <br />
                 <SelectFieldOption value={BrewingProcess.HarioV60}>{BrewingProcess.HarioV60}</SelectFieldOption>
-                <br />
               </SelectField>
             </BrewStep>
           )}

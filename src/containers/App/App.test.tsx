@@ -1,9 +1,11 @@
-import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { renderWithRedux } from "utils/testUtils";
-
-import { App } from "./";
 import { ApiContext } from "api/api";
+import React from "react";
+import { supressActWarnings } from "test/utils";
+import { renderWithRedux } from "utils/testUtils";
+import { App } from "./";
+
+supressActWarnings();
 
 describe("Application", () => {
   it("Application renders without crashing", () => {
