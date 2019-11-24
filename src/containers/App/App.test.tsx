@@ -1,8 +1,7 @@
 import "@testing-library/jest-dom/extend-expect";
 import { ApiContext } from "api/api";
 import React from "react";
-import { supressActWarnings } from "test/utils";
-import { renderWithRedux } from "utils/testUtils";
+import { supressActWarnings, renderWithRedux } from "test/utils";
 import { App } from "./";
 
 supressActWarnings();
