@@ -1,5 +1,4 @@
-import { getByLabelText, getByTitle } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { fireEvent, getByLabelText, getByTitle } from "@testing-library/react";
 import { InputElement } from "./Input.element";
 
 export class RadioInputElement<OptionValue extends string = string> implements InputElement<OptionValue> {
@@ -13,6 +12,6 @@ export class RadioInputElement<OptionValue extends string = string> implements I
   }
 
   setValue(value: OptionValue) {
-    return userEvent.selectOptions(this.element, value);
+    fireEvent.click(getByLabelText(this.element, value));
   }
 }

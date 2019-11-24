@@ -1,6 +1,6 @@
 import { BrewFlow } from "./Brew.flow";
 import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
-import { waitForDomChange } from "@testing-library/dom";
+import { screenshot } from "test/utils";
 
 describe("Brew", () => {
   let brewFlow: BrewFlow;
@@ -15,7 +15,7 @@ describe("Brew", () => {
 
     await brewFlow.setCoffeeOrigin("Kenya");
     await brewFlow.setCoffeeRoaster("THE BARN");
-    await brewFlow.setBrewingMethod(BrewingTechnique.Drip);
+    await brewFlow.setBrewingTechnique(BrewingTechnique.HarioV60);
     await brewFlow.setBrewingProcess(BrewingProcess.HarioV60);
     expect(await brewFlow.hasCorrectInitialValuesForProcess(BrewingProcess.HarioV60)).toBe(true);
     await brewFlow.customizeBrew({
@@ -29,7 +29,7 @@ describe("Brew", () => {
       await brewFlow.isDisplayingSummaryFor({
         roaster: "THE BARN",
         origin: "Kenya",
-        technique: BrewingTechnique.Drip,
+        technique: BrewingTechnique.HarioV60,
         process: BrewingProcess.HarioV60,
         temperature: "69",
         waterDose: "305",
@@ -45,7 +45,7 @@ describe("Brew", () => {
       brewFlow.hasSuccessfulySavedBrew({
         roaster: "THE BARN",
         origin: "Kenya",
-        technique: BrewingTechnique.Drip,
+        technique: BrewingTechnique.HarioV60,
         process: BrewingProcess.HarioV60,
         temperature: "69",
         waterDose: "305",

@@ -1,15 +1,15 @@
-import { getByText, queryByText, render, wait, prettyDOM } from "@testing-library/react";
+import { getByText, render, wait } from "@testing-library/react";
+import { ApiContext, CreateBrewData, IApi } from "api/api";
 import { App } from "containers/App";
 import React from "react";
-import { ButtonElement } from "testElements/Button.element";
-import { SelectInputElement } from "testElements/SelectInput.element";
-import { TextInputElement } from "testElements/TextInput.element";
+import { ButtonElement } from "test/elements/Button.element";
+import { RadioInputElement } from "test/elements/RadioInput.element";
+import { SelectInputElement } from "test/elements/SelectInput.element";
+import { TextInputElement } from "test/elements/TextInput.element";
+import { Routing } from "utils/routing";
+import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
 import { BrewingBasicsFormValues } from "./parts/BrewBasicsForm";
 import { BrewingCustomizationFormValues } from "./parts/BrewCustomizationForm";
-import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
-import { Routing } from "utils/routing";
-import { ApiContext, CreateBrewData, IApi } from "api/api";
-import { RadioInputElement } from "testElements/RadioInput.element";
 
 export class BrewFlow {
   static async render() {
@@ -40,8 +40,8 @@ export class BrewFlow {
     return this.coffeeRoasterInput.setValue(roaster);
   }
 
-  public async setBrewingMethod(brewingMethod: BrewingTechnique) {
-    this.brewingMethodInput.setValue(brewingMethod);
+  public async setBrewingTechnique(brewingMethod: BrewingTechnique) {
+    this.brewingTechniqueInput.setValue(brewingMethod);
   }
 
   public async setBrewingProcess(brewingProcess: BrewingProcess) {
@@ -112,7 +112,7 @@ export class BrewFlow {
     return new TextInputElement(this.container, "Roaster");
   }
 
-  private get brewingMethodInput() {
+  private get brewingTechniqueInput() {
     return new RadioInputElement<BrewingTechnique>(this.container, "Pick technique");
   }
 
