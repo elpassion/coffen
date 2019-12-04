@@ -3,7 +3,7 @@ import { InputElement } from "./Input.element";
 
 export class RadioInputElement<OptionValue extends string = string> implements InputElement<OptionValue> {
   private readonly element: HTMLSelectElement;
-  constructor(private readonly container: HTMLElement, title: string) {
+  constructor(private readonly container: HTMLElement, title: string, private readonly exact: boolean = true) {
     this.element = getByTitle(container, title) as HTMLSelectElement;
   }
 
@@ -12,6 +12,6 @@ export class RadioInputElement<OptionValue extends string = string> implements I
   }
 
   setValue(value: OptionValue) {
-    fireEvent.click(getByLabelText(this.element, value));
+    fireEvent.click(getByLabelText(this.element, value, { exact: !!this.exact }));
   }
 }

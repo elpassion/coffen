@@ -113,7 +113,7 @@ export class BrewFlow {
   }
 
   private get brewingTechniqueInput() {
-    return new SelectInputElement<Technique>(this.container, "Technique");
+    return new RadioInputElement<Technique>(this.container, "Technique", false);
   }
 
   private get waterDoseInput() {

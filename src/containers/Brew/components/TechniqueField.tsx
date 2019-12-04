@@ -31,7 +31,7 @@ export const TechniqueFieldLabel = () => {
   const { name, value } = useRadioFieldContext();
   return (
     <Label htmlFor={`${name}-${value}`}>
-      <ExpandedTechnique>James Hoffman's Ultimate v60</ExpandedTechnique>
+      <ExpandedTechnique title="Technique name">v60</ExpandedTechnique>
       <GrindDetails coffeeWeight="20.5" grindSize={GrindSize.Medium} />
       <WaterDetails waterTemperature="95" waterDose="300" />
     </Label>
