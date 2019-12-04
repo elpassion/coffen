@@ -1,6 +1,5 @@
-import styled from "styled-components";
 import { rem } from "polished";
-
+import styled from "styled-components";
 import { colorName, font } from "styles";
 
 export const BrewStepWrapper = styled.li`

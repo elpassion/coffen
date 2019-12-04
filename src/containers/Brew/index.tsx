@@ -1,14 +1,11 @@
+import { useApi } from "api/api";
+import { PageTitle } from "components/PageTitle";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
-
 import { Routing } from "utils/routing";
-import { useApi } from "api/api";
-
-import { BrewBasicsForm, BrewingBasicsFormValues } from "./parts/BrewBasicsForm";
-import { BrewCustomizationForm, BrewingCustomizationFormValues } from "./parts/BrewCustomizationForm";
-import { BrewRatingForm, BrewRatingFormValues } from "./parts/BrewRatingForm";
-import { PageTitle } from "components/PageTitle";
-
+import { BrewBasicsForm, BrewingBasicsFormValues } from "./components/BrewBasicsForm";
+import { BrewCustomizationForm, BrewingCustomizationFormValues } from "./components/BrewCustomizationForm";
+import { BrewRatingForm, BrewRatingFormValues } from "./components/BrewRatingForm";
 import { StepsWrapper } from "./style";
 
 export const Brew = () => {

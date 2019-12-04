@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect, useCallback } from "react";
+import { BrewingBasicsFormValues } from "containers/Brew/components/BrewBasicsForm";
+import { BrewingCustomizationFormValues } from "containers/Brew/components/BrewCustomizationForm";
+import { BrewRatingFormValues } from "containers/Brew/components/BrewRatingForm";
 import firebase from "firebase";
-import { BrewingBasicsFormValues } from "containers/Brew/parts/BrewBasicsForm";
-import { BrewingCustomizationFormValues } from "containers/Brew/parts/BrewCustomizationForm";
-import { BrewRatingFormValues } from "containers/Brew/parts/BrewRatingForm";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 
 export interface CreateBrewData extends BrewingBasicsFormValues, BrewingCustomizationFormValues, BrewRatingFormValues {
   createdAt: Date;

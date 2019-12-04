@@ -1,6 +1,5 @@
 import React from "react";
-
-import { BrewStepWrapper, BrewStepIndicator, BrewStepCount, BrewStepLabel, BrewStepsDetails } from "./style";
+import { BrewStepCount, BrewStepIndicator, BrewStepLabel, BrewStepsDetails, BrewStepWrapper } from "./style";
 
 export interface BrewStepProps {
   step: number;

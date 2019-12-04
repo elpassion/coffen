@@ -1,12 +1,11 @@
-import { BrewStep } from "components/BrewStep";
 import { RadioField, RadioFieldOption } from "components/Form/RadioField";
-import { SelectField, SelectFieldOption } from "components/Form/SelectField";
 import { TextField } from "components/Form/TextField";
 import { ErrorsForValues } from "components/Form/types";
 import { AeropressIcon } from "components/Svg/AeropressIcon";
 import { CupIcon } from "components/Svg/CupIcon";
 import { FrenchpressIcon } from "components/Svg/FrenchpressIcon";
 import { WaveIcon } from "components/Svg/WaveIcon";
+import { BrewStep } from "containers/Brew/components/BrewStep";
 import React from "react";
 import { Form, FormSpy } from "react-final-form";
 import { Method, Technique } from "../options";
@@ -59,10 +58,7 @@ export const BrewBasicsForm: React.FC<BrewBasicsFormProps> = ({ onSubmit }) => {
           )}
           {values.method && (
             <BrewStep step={3} label="Technique">
-              <SelectField name="technique" label="Technique" initialValue="">
-                <SelectFieldOption value={""}></SelectFieldOption>
-                <SelectFieldOption value={Technique.v60}>{Technique.v60}</SelectFieldOption>
-              </SelectField>
+              <div />
             </BrewStep>
           )}
         </form>

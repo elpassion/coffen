@@ -7,9 +7,9 @@ import { RadioInputElement } from "test/elements/RadioInput.element";
 import { SelectInputElement } from "test/elements/SelectInput.element";
 import { TextInputElement } from "test/elements/TextInput.element";
 import { Routing } from "utils/routing";
+import { BrewingBasicsFormValues } from "./components/BrewBasicsForm";
+import { BrewingCustomizationFormValues } from "./components/BrewCustomizationForm";
 import { GrindSize, Method, Technique } from "./options";
-import { BrewingBasicsFormValues } from "./parts/BrewBasicsForm";
-import { BrewingCustomizationFormValues } from "./parts/BrewCustomizationForm";
 
 export class BrewFlow {
   static async render() {
