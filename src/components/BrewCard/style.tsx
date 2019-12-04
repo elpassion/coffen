@@ -1,5 +1,9 @@
+import { CoffeGrainIcon } from "components/Svg/CoffeGrainIcon";
+import { WaterDropIcon } from "components/Svg/WaterDropIcon";
+import { GrindSize } from "containers/Brew/options";
 import { rem, rgba } from "polished";
-import styled, { css } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 import { colorName, font, size, transitions } from "styles";
 import { appearFromBottom, OswaldType } from "styles/commonStyles";
 
@@ -81,13 +85,31 @@ export const ExpandedDetails = styled.div<{ isExpanded: boolean }>`
         height: ${rem(144)};
     `}
 `;
-
-export const ExpandedElementBase = css`
-  margin: 0 0 ${rem(8)};
-  font-size: ${rem(font.size.normal)};
+export const ExpandedDate = styled.p`
+  margin: 0;
+  text-align: right;
+  font-size: ${rem(font.size.small)};
+  margin: 0;
 `;
 
-export const BaseForIcons = css`
+export const ExpandedActions = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > button {
+    flex: 0 0 48%;
+  }
+
+  & + ${ExpandedDate} {
+    margin-top: ${rem(size.defaultPadding)};
+  }
+`;
+
+export const ExpandedElement = styled.p`
+  ${OswaldType};
+  font-size: ${rem(font.size.normal)};
+  margin: 0;
   display: flex;
   align-items: center;
 
@@ -97,44 +119,34 @@ export const BaseForIcons = css`
     width: ${rem(16)};
     height: ${rem(16)};
   }
-`;
 
-export const ExpandedTechnique = styled.p`
-  ${ExpandedElementBase};
-  ${OswaldType};
+  & + p {
+    margin: ${rem(8)} 0 0;
+  }
 
-  font-weight: ${font.weight.semiBold};
-`;
-
-export const ExpandedGrind = styled.p`
-  ${ExpandedElementBase};
-  ${OswaldType};
-  ${BaseForIcons};
-`;
-
-export const ExpandedWater = styled.p`
-  ${OswaldType};
-  ${BaseForIcons};
-
-  margin: 0 0 ${rem(size.defaultPadding)};
-`;
-
-export const ExpandedActions = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 ${rem(size.defaultPadding)};
-
-  & > button {
-    flex: 0 0 48%;
+  & + ${ExpandedActions} {
+    margin-top: ${rem(size.defaultPadding)};
   }
 `;
 
-export const ExpandedDate = styled.p`
-  margin: 0;
-  text-align: right;
-  font-size: ${rem(font.size.small)};
+export const ExpandedTechnique = styled(ExpandedElement)`
+  font-weight: ${font.weight.semiBold};
 `;
+
+export const GrindDetails: React.FC<{ coffeeWeight: string; grindSize: GrindSize }> = ({ coffeeWeight, grindSize }) => (
+  <ExpandedElement>
+    <CoffeGrainIcon /> {coffeeWeight}g / {grindSize} grind
+  </ExpandedElement>
+);
+
+export const WaterDetails: React.FC<{ waterDose: string; waterTemperature: string }> = ({
+  waterDose,
+  waterTemperature
+}) => (
+  <ExpandedElement>
+    <WaterDropIcon /> {waterDose}ml / {waterTemperature}°C
+  </ExpandedElement>
+);
 
 export const MetaRow = styled.div`
   display: flex;

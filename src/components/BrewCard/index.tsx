@@ -1,8 +1,6 @@
 import { BrewData } from "api/api";
 import { StarRarting } from "components/StarRarting";
-import { CoffeGrainIcon } from "components/Svg/CoffeGrainIcon";
 import { CupIcon } from "components/Svg/CupIcon";
-import { WaterDropIcon } from "components/Svg/WaterDropIcon";
 import dayjs from "dayjs";
 import React, { useState } from "react";
 import {
@@ -14,12 +12,12 @@ import {
   ExpandedActions,
   ExpandedDate,
   ExpandedDetails,
-  ExpandedGrind,
   ExpandedTechnique,
-  ExpandedWater,
+  GrindDetails,
   MetaRow,
   TechniqueAuthor,
-  TopRow
+  TopRow,
+  WaterDetails
 } from "./style";
 
 export interface BrewCardData {
@@ -53,13 +51,9 @@ export const BrewCard: React.FC<BrewCardData> = ({
       <ExpandedDetails isExpanded={isExpanded}>
         <ExpandedTechnique>{technique}</ExpandedTechnique>
 
-        <ExpandedGrind>
-          <CoffeGrainIcon /> {coffeeWeight}g / {grindSize} grind
-        </ExpandedGrind>
+        <GrindDetails coffeeWeight={coffeeWeight} grindSize={grindSize} />
 
-        <ExpandedWater>
-          <WaterDropIcon /> {waterDose}ml / 98°C
-        </ExpandedWater>
+        <WaterDetails waterDose={waterDose} waterTemperature={"98"} />
 
         <ExpandedActions>
           <button>Favourite</button>

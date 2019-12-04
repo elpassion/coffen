@@ -1,4 +1,3 @@
-import { RadioField, RadioFieldOption } from "components/Form/RadioField";
 import { TextField } from "components/Form/TextField";
 import { ErrorsForValues } from "components/Form/types";
 import { AeropressIcon } from "components/Svg/AeropressIcon";
@@ -9,6 +8,8 @@ import { BrewStep } from "containers/Brew/components/BrewStep";
 import React from "react";
 import { Form, FormSpy } from "react-final-form";
 import { Method, Technique } from "../options";
+import { MethodField, MethodFieldLabel, MethodFieldOption } from "./MethodField";
+import { TechniqueField, TechniqueFieldLabel, TechniqueFieldOption } from "./TechniqueField";
 
 export interface BrewingBasicsFormValues {
   origin: string;
@@ -48,17 +49,28 @@ export const BrewBasicsForm: React.FC<BrewBasicsFormProps> = ({ onSubmit }) => {
 
           {values.origin && values.roaster && (
             <BrewStep step={2} label="Method">
-              <RadioField title="Pick method">
-                <RadioFieldOption name="method" value={Method.v60} icon={<CupIcon />} />
-                <RadioFieldOption name="method" value={Method.Wave} icon={<WaveIcon />} />
-                <RadioFieldOption name="method" value={Method.AeroPress} icon={<AeropressIcon />} />
-                <RadioFieldOption name="method" value={Method.FrenchPress} icon={<FrenchpressIcon />} />
-              </RadioField>
+              <MethodField title="Pick method">
+                <MethodFieldOption name="method" value={Method.v60} label={<MethodFieldLabel icon={<CupIcon />} />} />
+                <MethodFieldOption name="method" value={Method.Wave} label={<MethodFieldLabel icon={<WaveIcon />} />} />
+                <MethodFieldOption
+                  name="method"
+                  value={Method.AeroPress}
+                  label={<MethodFieldLabel icon={<AeropressIcon />} />}
+                />
+                <MethodFieldOption
+                  name="method"
+                  value={Method.FrenchPress}
+                  label={<MethodFieldLabel icon={<FrenchpressIcon />} />}
+                />
+              </MethodField>
             </BrewStep>
           )}
           {values.method && (
             <BrewStep step={3} label="Technique">
-              <div />
+              <TechniqueField title="Technique">
+                <TechniqueFieldOption label={<TechniqueFieldLabel />} name="technique" value={Technique.v60} />
+                <TechniqueFieldOption label={<TechniqueFieldLabel />} name="technique" value={Technique.v60} />
+              </TechniqueField>
             </BrewStep>
           )}
         </form>
