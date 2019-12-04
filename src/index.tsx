@@ -1,10 +1,8 @@
+import { Main } from "main";
 import React from "react";
 import ReactDOM from "react-dom";
 import WebFont from "webfontloader";
-
-import { GlobalStyle } from "styles";
 import * as serviceWorker from "./serviceWorker";
-import { ApiContext, ApiClient } from "api/api";
 
 WebFont.load({
   google: {
@@ -13,17 +11,7 @@ WebFont.load({
 });
 
 const render = () => {
-  const { App } = require("containers/App");
-
-  ReactDOM.render(
-    <>
-      <GlobalStyle />
-      <ApiContext.Provider value={new ApiClient()}>
-        <App />
-      </ApiContext.Provider>
-    </>,
-    document.getElementById("root")
-  );
+  ReactDOM.render(<Main />, document.getElementById("root"));
 };
 
 render();

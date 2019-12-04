@@ -1,6 +1,6 @@
 import { getByText, render, wait } from "@testing-library/react";
-import { ApiContext, CreateBrewData, IApiClient } from "api/api";
-import { App } from "containers/App";
+import { CreateBrewData, IApiClient } from "api/api";
+import { Main } from "main";
 import React from "react";
 import { ButtonElement } from "test/elements/Button.element";
 import { RadioInputElement } from "test/elements/RadioInput.element";
@@ -14,11 +14,7 @@ import { BrewingCustomizationFormValues } from "./parts/BrewCustomizationForm";
 export class BrewFlow {
   static async render() {
     const api: IApiClient = { createBrew: jest.fn(), getBrews: jest.fn().mockResolvedValue([]) };
-    const { container } = render(
-      <ApiContext.Provider value={api}>
-        <App />
-      </ApiContext.Provider>
-    );
+    const { container } = render(<Main apiClient={api} />);
     return new BrewFlow(container, api);
   }
 
