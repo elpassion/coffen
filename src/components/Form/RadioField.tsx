@@ -1,10 +1,9 @@
-import styled from "styled-components";
+import { CupIcon } from "components/Svg/CupIcon";
 import { rem, rgba } from "polished";
-import { colorName } from "styles";
-import { BrewingProcess } from "containers/Brew/options";
 import React from "react";
 import { Field } from "react-final-form";
-import { CupIcon } from "components/Svg/CupIcon";
+import styled from "styled-components";
+import { colorName } from "styles";
 
 export const RadioField = styled.div<{ title: string }>`
   display: flex;
@@ -51,7 +50,7 @@ export const RadioInput = styled.div`
 export const RadioFieldOption: React.FC<{ value: string }> = ({ value }) => {
   return (
     <RadioInput>
-      <Field id={`technique-${value}`} name="technique" component="input" type="radio" value={value} />
+      <Field id={`technique-${value}`} name={`technique-${value}`} component="input" type="radio" value={value} />
       <label htmlFor={`technique-${value}`}>
         <CupIcon />
         <span>{value}</span>

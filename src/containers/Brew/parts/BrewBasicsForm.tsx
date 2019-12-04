@@ -40,9 +40,7 @@ export const BrewBasicsForm: React.FC<BrewBasicsFormProps> = ({ onSubmit }) => {
           />
           <BrewStep step={1} label="Coffee">
             <TextField name="origin" label="Origin" />
-            <br />
             <TextField name="roaster" label="Roaster" />
-            <br />
           </BrewStep>
 
           {values.origin && values.roaster && (

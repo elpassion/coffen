@@ -43,6 +43,7 @@ export const font = {
 };
 
 export const size = {
+  smallPadding: 8,
   defaultPadding: 16,
   tabBarHeight: 64,
   borderRadius: 12
