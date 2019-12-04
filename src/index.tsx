@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
 import WebFont from "webfontloader";
 
 import { GlobalStyle } from "styles";
-import { initStore } from "stores/initStore";
 import * as serviceWorker from "./serviceWorker";
 import { ApiContext, ApiClient } from "api/api";
 
@@ -18,12 +16,12 @@ const render = () => {
   const { App } = require("containers/App");
 
   ReactDOM.render(
-    <Provider store={initStore}>
+    <>
       <GlobalStyle />
       <ApiContext.Provider value={new ApiClient()}>
         <App />
       </ApiContext.Provider>
-    </Provider>,
+    </>,
     document.getElementById("root")
   );
 };

@@ -10,7 +10,6 @@
     "format": "prettier --write \"src/**/*\""
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.0.4",
     "@testing-library/jest-dom": "^4.2.4",
     "dayjs": "^1.8.17",
     "final-form": "^4.18.6",
@@ -19,7 +18,6 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-final-form": "^6.3.3",
-    "react-redux": "^7.1.3",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "styled-components": "^4.4.1",
@@ -35,7 +33,6 @@
     "@types/open": "^6.2.1",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
-    "@types/react-redux": "^7.1.5",
     "@types/react-router-dom": "^5.1.2",
     "@types/styled-components": "^4.4.0",
     "@types/testing-library__user-event": "^4.1.1",
@@ -46,6 +43,7 @@
     "jsdom-screenshot": "^3.2.0",
     "lint-staged": "^9.4.3",
     "open": "^7.0.0",
+    "organize-imports-cli": "^0.7.0",
     "prettier": "^1.19.1",
     "react-scripts": "3.2.0",
     "tmp": "^0.1.0",
@@ -72,7 +70,12 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "src/**/*.{ts, tsx}": [
+      "organize-imports-cli",
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.{js,jsx,json,css,scss,md}": [
       "prettier --write",
       "git add"
     ]
