@@ -17,9 +17,9 @@ describe("Brew", () => {
 
     await brewFlow.setCoffeeOrigin("Kenya");
     await brewFlow.setCoffeeRoaster("THE BARN");
-    await brewFlow.setBrewingTechnique(BrewingTechnique.HarioV60);
-    await brewFlow.setBrewingProcess(BrewingProcess.HarioV60);
-    expect(await brewFlow.hasCorrectInitialValuesForProcess(BrewingProcess.HarioV60)).toBe(true);
+    await brewFlow.setBrewingTechnique(BrewingTechnique.v60);
+    await brewFlow.setBrewingProcess(BrewingProcess.v60);
+    expect(await brewFlow.hasCorrectInitialValuesForProcess(BrewingProcess.v60)).toBe(true);
     await brewFlow.customizeBrew({
       waterDose: "305",
       coffeeWeight: "20",
@@ -31,8 +31,8 @@ describe("Brew", () => {
       await brewFlow.isDisplayingSummaryFor({
         roaster: "THE BARN",
         origin: "Kenya",
-        technique: BrewingTechnique.HarioV60,
-        process: BrewingProcess.HarioV60,
+        technique: BrewingTechnique.v60,
+        process: BrewingProcess.v60,
         temperature: "69",
         waterDose: "305",
         coffeeWeight: "20",
@@ -47,8 +47,8 @@ describe("Brew", () => {
       brewFlow.hasSuccessfulySavedBrew({
         roaster: "THE BARN",
         origin: "Kenya",
-        technique: BrewingTechnique.HarioV60,
-        process: BrewingProcess.HarioV60,
+        technique: BrewingTechnique.v60,
+        process: BrewingProcess.v60,
         temperature: "69",
         waterDose: "305",
         coffeeWeight: "20",

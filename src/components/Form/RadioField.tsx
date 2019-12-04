@@ -1,9 +1,8 @@
-import { CupIcon } from "components/Svg/CupIcon";
 import { rem, rgba } from "polished";
 import React from "react";
 import { Field } from "react-final-form";
 import styled from "styled-components";
-import { colorName } from "styles";
+import { colorName, font } from "styles";
 
 export const RadioField = styled.div<{ title: string }>`
   display: flex;
@@ -33,26 +32,36 @@ export const RadioInput = styled.div`
       height: ${rem(24)};
 
       & + span {
-        margin-bottom: ${rem(8)};
+        font-size: ${rem(font.size.small)};
+        margin-top: ${rem(8)};
       }
     }
   }
 
   input {
-    visibility: hidden;
+    position: absolute;
+    left: -10000000px;
   }
 
   input:checked + label {
     border: 1px solid ${colorName.red};
   }
+
+  input:focus + label {
+    border: 1px solid ${colorName.orange};
+  }
 `;
 
-export const RadioFieldOption: React.FC<{ value: string }> = ({ value }) => {
+export const RadioFieldOption: React.FC<{ value: string; name: string; icon: React.ReactNode }> = ({
+  value,
+  name,
+  icon
+}) => {
   return (
     <RadioInput>
-      <Field id={`technique-${value}`} name={`technique-${value}`} component="input" type="radio" value={value} />
+      <Field id={`${name}-${value}`} name={name} component="input" type="radio" value={value} />
       <label htmlFor={`technique-${value}`}>
-        <CupIcon />
+        {icon}
         <span>{value}</span>
       </label>
     </RadioInput>
