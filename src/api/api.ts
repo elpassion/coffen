@@ -12,12 +12,12 @@ export interface BrewData extends CreateBrewData {
   id: string;
 }
 
-export interface IApi {
+export interface IApiClient {
   createBrew(data: CreateBrewData): Promise<BrewData>;
   getBrews(): Promise<BrewData[]>;
 }
 
-export class Api implements IApi {
+export class ApiClient implements IApiClient {
   private readonly firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyB8PxXqxJ525Wg0aoq75do31a94cRw_GmQ",
     authDomain: "coffen-85ffe.web.app",
@@ -45,7 +45,7 @@ export class Api implements IApi {
   };
 }
 
-export const ApiContext = React.createContext<IApi>({} as IApi);
+export const ApiContext = React.createContext<IApiClient>({} as IApiClient);
 
 export const useApi = () => useContext(ApiContext);
 
