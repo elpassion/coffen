@@ -70,12 +70,12 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts, tsx}": [
+    "*.{ts, tsx}": [
       "organize-imports-cli",
       "prettier --write",
       "git add"
     ],
-    "src/**/*.{js,jsx,json,css,scss,md}": [
+    "*.{js,jsx,json,css,scss,md}": [
       "prettier --write",
       "git add"
     ]
