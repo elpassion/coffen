@@ -60,7 +60,7 @@ export const RadioFieldOption: React.FC<{ value: string; name: string; icon: Rea
   return (
     <RadioInput>
       <Field id={`${name}-${value}`} name={name} component="input" type="radio" value={value} />
-      <label htmlFor={`technique-${value}`}>
+      <label htmlFor={`${name}-${value}`}>
         {icon}
         <span>{value}</span>
       </label>

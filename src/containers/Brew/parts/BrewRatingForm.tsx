@@ -1,8 +1,8 @@
-import { Form } from "react-final-form";
-import React from "react";
-import { ErrorsForValues } from "components/Form/types";
 import { SelectField, SelectFieldOption } from "components/Form/SelectField";
 import { SubmitButton } from "components/Form/SubmitButton";
+import { ErrorsForValues } from "components/Form/types";
+import React from "react";
+import { Form } from "react-final-form";
 import { BrewingBasicsFormValues } from "./BrewBasicsForm";
 import { BrewingCustomizationFormValues } from "./BrewCustomizationForm";
 
@@ -31,7 +31,7 @@ export const BrewRatingForm: React.FC<BrewRatingFormProps> = ({ onSubmit, brewBa
         <form onSubmit={handleSubmit}>
           <p>Origin: {brewBasics.origin}</p>
           <p>Roaster: {brewBasics.roaster}</p>
-          <p>Technique: {brewBasics.technique}</p>
+          <p>Method: {brewBasics.method}</p>
           <p>Water: {brewCustomizationData.waterDose}</p>
           <p>Temperature: {brewCustomizationData.temperature}</p>
           <p>Coffee Weight: {brewCustomizationData.coffeeWeight}</p>

@@ -1,28 +1,25 @@
-import React, { useState } from "react";
-import dayjs from "dayjs";
-
-import { CupIcon } from "components/Svg/CupIcon";
-import { CoffeGrainIcon } from "components/Svg/CoffeGrainIcon";
-import { WaterDropIcon } from "components/Svg/WaterDropIcon";
-import { StarRarting } from "components/StarRarting";
-
 import { BrewData } from "api/api";
-
+import { StarRarting } from "components/StarRarting";
+import { CoffeGrainIcon } from "components/Svg/CoffeGrainIcon";
+import { CupIcon } from "components/Svg/CupIcon";
+import { WaterDropIcon } from "components/Svg/WaterDropIcon";
+import dayjs from "dayjs";
+import React, { useState } from "react";
 import {
   Card,
-  TopRow,
+  ClickableWrapper,
+  CoffeeMeasures,
   CoffeeOrigin,
   CoffeeRoastery,
-  CoffeeMeasures,
-  ExpandedDetails,
-  TechniqueAuthor,
-  ExpandedTechnique,
-  ExpandedGrind,
-  ExpandedWater,
   ExpandedActions,
-  ClickableWrapper,
   ExpandedDate,
-  MetaRow
+  ExpandedDetails,
+  ExpandedGrind,
+  ExpandedTechnique,
+  ExpandedWater,
+  MetaRow,
+  TechniqueAuthor,
+  TopRow
 } from "./style";
 
 export interface BrewCardData {
@@ -32,7 +29,7 @@ export interface BrewCardData {
 
 export const BrewCard: React.FC<BrewCardData> = ({
   animationDelay,
-  brew: { id, roaster, coffeeWeight, grindSize, process, rating, technique, waterDose, origin, createdAt }
+  brew: { id, roaster, coffeeWeight, grindSize, technique, rating, method, waterDose, origin, createdAt }
 }) => {
   const [isExpanded, toggleExpand] = useState(false);
   return (
@@ -54,7 +51,7 @@ export const BrewCard: React.FC<BrewCardData> = ({
       </ClickableWrapper>
 
       <ExpandedDetails isExpanded={isExpanded}>
-        <ExpandedTechnique>{process}</ExpandedTechnique>
+        <ExpandedTechnique>{technique}</ExpandedTechnique>
 
         <ExpandedGrind>
           <CoffeGrainIcon /> {coffeeWeight}g / {grindSize} grind

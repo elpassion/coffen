@@ -7,7 +7,7 @@ import { RadioInputElement } from "test/elements/RadioInput.element";
 import { SelectInputElement } from "test/elements/SelectInput.element";
 import { TextInputElement } from "test/elements/TextInput.element";
 import { Routing } from "utils/routing";
-import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
+import { GrindSize, Method, Technique } from "./options";
 import { BrewingBasicsFormValues } from "./parts/BrewBasicsForm";
 import { BrewingCustomizationFormValues } from "./parts/BrewCustomizationForm";
 
@@ -36,12 +36,12 @@ export class BrewFlow {
     return this.coffeeRoasterInput.setValue(roaster);
   }
 
-  public async setBrewingTechnique(brewingMethod: BrewingTechnique) {
-    this.brewingTechniqueInput.setValue(brewingMethod);
+  public async setBrewingMethod(brewingMethod: Method) {
+    this.brewingMethodInput.setValue(brewingMethod);
   }
 
-  public async setBrewingProcess(brewingProcess: BrewingProcess) {
-    this.brewingProcessInput.setValue(brewingProcess);
+  public async setBrewingTechnique(brewingTechnique: Technique) {
+    this.brewingTechniqueInput.setValue(brewingTechnique);
   }
 
   public async customizeBrew({ coffeeWeight, grindSize, waterDose, temperature }: BrewingCustomizationFormValues) {
@@ -60,7 +60,7 @@ export class BrewFlow {
     await wait();
   }
 
-  public async hasCorrectInitialValuesForProcess(brewingProcess: BrewingProcess): Promise<boolean> {
+  public async hasCorrectInitialValuesForTechnique(brewingTechnique: Technique): Promise<boolean> {
     return (
       this.waterDoseInput.value === "300" &&
       this.coffeeWeightInput.value === "18" &&
@@ -74,7 +74,7 @@ export class BrewFlow {
     return (
       !!getByText(this.container, `Origin: ${brewingData.origin}`) &&
       !!getByText(this.container, `Roaster: ${brewingData.roaster}`) &&
-      !!getByText(this.container, `Technique: ${brewingData.technique}`) &&
+      !!getByText(this.container, `Method: ${brewingData.method}`) &&
       !!getByText(this.container, `Water: ${brewingData.waterDose}`) &&
       !!getByText(this.container, `Temperature: ${brewingData.temperature}`) &&
       !!getByText(this.container, `Coffee Weight: ${brewingData.coffeeWeight}`) &&
@@ -108,12 +108,12 @@ export class BrewFlow {
     return new TextInputElement(this.container, "Roaster");
   }
 
-  private get brewingTechniqueInput() {
-    return new RadioInputElement<BrewingTechnique>(this.container, "Pick technique");
+  private get brewingMethodInput() {
+    return new RadioInputElement<Method>(this.container, "Pick method");
   }
 
-  private get brewingProcessInput() {
-    return new SelectInputElement<BrewingProcess>(this.container, "Process");
+  private get brewingTechniqueInput() {
+    return new SelectInputElement<Technique>(this.container, "Technique");
   }
 
   private get waterDoseInput() {

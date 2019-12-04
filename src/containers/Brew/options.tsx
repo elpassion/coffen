@@ -1,11 +1,11 @@
-export enum BrewingTechnique {
+export enum Method {
   v60 = "v60",
   Wave = "Wave",
   AeroPress = "Aeropress",
   FrenchPress = "French"
 }
 
-export enum BrewingProcess {
+export enum Technique {
   v60 = "v60",
   Wave = "Wave",
   AeroPress = "Aeropress",

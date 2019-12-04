@@ -9,13 +9,13 @@ import { FrenchpressIcon } from "components/Svg/FrenchpressIcon";
 import { WaveIcon } from "components/Svg/WaveIcon";
 import React from "react";
 import { Form, FormSpy } from "react-final-form";
-import { BrewingProcess, BrewingTechnique } from "../options";
+import { Method, Technique } from "../options";
 
 export interface BrewingBasicsFormValues {
   origin: string;
   roaster: string;
-  technique: BrewingTechnique;
-  process: BrewingProcess;
+  method: Method;
+  technique: Technique;
 }
 
 interface BrewBasicsFormProps {
@@ -30,8 +30,8 @@ export const BrewBasicsForm: React.FC<BrewBasicsFormProps> = ({ onSubmit }) => {
         const errors: ErrorsForValues<BrewingBasicsFormValues> = {};
         if (!values.origin) errors.origin = "Required";
         if (!values.roaster) errors.roaster = "Required";
+        if (!values.method) errors.method = "Required";
         if (!values.technique) errors.technique = "Required";
-        if (!values.process) errors.process = "Required";
         return errors;
       }}
       render={({ handleSubmit, values }) => (
@@ -48,20 +48,20 @@ export const BrewBasicsForm: React.FC<BrewBasicsFormProps> = ({ onSubmit }) => {
           </BrewStep>
 
           {values.origin && values.roaster && (
-            <BrewStep step={2} label="Technique">
-              <RadioField title="Pick technique">
-                <RadioFieldOption name="technique" value={BrewingProcess.v60} icon={<CupIcon />} />
-                <RadioFieldOption name="technique" value={BrewingProcess.Wave} icon={<WaveIcon />} />
-                <RadioFieldOption name="technique" value={BrewingProcess.AeroPress} icon={<AeropressIcon />} />
-                <RadioFieldOption name="technique" value={BrewingProcess.FrenchPress} icon={<FrenchpressIcon />} />
+            <BrewStep step={2} label="Method">
+              <RadioField title="Pick method">
+                <RadioFieldOption name="method" value={Method.v60} icon={<CupIcon />} />
+                <RadioFieldOption name="method" value={Method.Wave} icon={<WaveIcon />} />
+                <RadioFieldOption name="method" value={Method.AeroPress} icon={<AeropressIcon />} />
+                <RadioFieldOption name="method" value={Method.FrenchPress} icon={<FrenchpressIcon />} />
               </RadioField>
             </BrewStep>
           )}
-          {values.technique && (
-            <BrewStep step={3} label="Method">
-              <SelectField name="process" label="Process" initialValue="">
+          {values.method && (
+            <BrewStep step={3} label="Technique">
+              <SelectField name="technique" label="Technique" initialValue="">
                 <SelectFieldOption value={""}></SelectFieldOption>
-                <SelectFieldOption value={BrewingProcess.v60}>{BrewingProcess.v60}</SelectFieldOption>
+                <SelectFieldOption value={Technique.v60}>{Technique.v60}</SelectFieldOption>
               </SelectField>
             </BrewStep>
           )}

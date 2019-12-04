@@ -1,6 +1,6 @@
 import { supressActWarnings } from "test/utils";
 import { BrewFlow } from "./Brew.flow";
-import { BrewingProcess, BrewingTechnique, GrindSize } from "./options";
+import { GrindSize, Method, Technique } from "./options";
 
 supressActWarnings();
 
@@ -17,9 +17,9 @@ describe("Brew", () => {
 
     await brewFlow.setCoffeeOrigin("Kenya");
     await brewFlow.setCoffeeRoaster("THE BARN");
-    await brewFlow.setBrewingTechnique(BrewingTechnique.v60);
-    await brewFlow.setBrewingProcess(BrewingProcess.v60);
-    expect(await brewFlow.hasCorrectInitialValuesForProcess(BrewingProcess.v60)).toBe(true);
+    await brewFlow.setBrewingMethod(Method.v60);
+    await brewFlow.setBrewingTechnique(Technique.v60);
+    expect(await brewFlow.hasCorrectInitialValuesForTechnique(Technique.v60)).toBe(true);
     await brewFlow.customizeBrew({
       waterDose: "305",
       coffeeWeight: "20",
@@ -31,8 +31,8 @@ describe("Brew", () => {
       await brewFlow.isDisplayingSummaryFor({
         roaster: "THE BARN",
         origin: "Kenya",
-        technique: BrewingTechnique.v60,
-        process: BrewingProcess.v60,
+        method: Method.v60,
+        technique: Technique.v60,
         temperature: "69",
         waterDose: "305",
         coffeeWeight: "20",
@@ -47,8 +47,8 @@ describe("Brew", () => {
       brewFlow.hasSuccessfulySavedBrew({
         roaster: "THE BARN",
         origin: "Kenya",
-        technique: BrewingTechnique.v60,
-        process: BrewingProcess.v60,
+        method: Method.v60,
+        technique: Technique.v60,
         temperature: "69",
         waterDose: "305",
         coffeeWeight: "20",
