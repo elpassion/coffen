@@ -1,8 +1,8 @@
-import { supressActWarnings } from "test/utils";
+import { setupBrowserTests } from "test/utils";
 import { BrewFlow } from "./Brew.flow";
 import { GrindSize, Method, Technique } from "./options";
 
-supressActWarnings();
+setupBrowserTests();
 
 describe("Brew", () => {
   let brewFlow: BrewFlow;
